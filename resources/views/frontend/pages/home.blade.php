@@ -278,10 +278,7 @@
                                 <img src="{{ asset('frontend/images/demos/demo2/blog/1.jpg')}}" alt="Post" width="620"
                                     height="398" style="background-color: #898078;">
                             </a>
-                            <div class="post-calendar">
-                                <span class="post-day">05</span>
-                                <span class="post-month">Mar</span>
-                            </div>
+                            
                         </figure>
                         <div class="post-details">
                             <h4 class="post-title"><a href="post-single.html">We want to be different, and Fashion
@@ -300,10 +297,7 @@
                                 <img src="{{ asset('frontend/images/demos/demo2/blog/1.jpg')}}" alt="Post" width="620"
                                     height="398" style="background-color: #898078;">
                             </a>
-                            <div class="post-calendar">
-                                <span class="post-day">05</span>
-                                <span class="post-month">Mar</span>
-                            </div>
+                            
                         </figure>
                         <div class="post-details">
                             <h4 class="post-title"><a href="post-single.html">We want to be different, and Fashion
@@ -322,10 +316,6 @@
                                 <img src="{{ asset('frontend/images/demos/demo2/blog/2.jpg')}}" alt="Post" width="620"
                                     height="398" style="background-color: #EDEFEE;">
                             </a>
-                            <div class="post-calendar">
-                                <span class="post-day">14</span>
-                                <span class="post-month">Mar</span>
-                            </div>
                         </figure>
                         <div class="post-details">
                             <h4 class="post-title"><a href="post-single.html">Explore Fashion For Women In</a></h4>
@@ -343,10 +333,7 @@
                                 <img src="{{ asset('frontend/images/demos/demo2/blog/3.jpg')}}" alt="Post" width="620"
                                     height="398" style="background-color: #A1A09E;">
                             </a>
-                            <div class="post-calendar">
-                                <span class="post-day">25</span>
-                                <span class="post-month">Mar</span>
-                            </div>
+                            
                         </figure>
                         <div class="post-details">
                             <h4 class="post-title"><a href="post-single.html">Fashion tells about who you are from
@@ -364,10 +351,6 @@
                                 <img src="{{ asset('frontend/images/demos/demo2/blog/4.jpg')}}" alt="Post" width="620"
                                     height="398" style="background-color: #EDF1F2;">
                             </a>
-                            <div class="post-calendar">
-                                <span class="post-day">16</span>
-                                <span class="post-month">Mar</span>
-                            </div>
                         </figure>
                         <div class="post-details">
                             <h4 class="post-title"><a href="post-single.html">Just found the ultimate denim

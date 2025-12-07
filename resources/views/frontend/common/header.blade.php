@@ -58,8 +58,12 @@
                                     <a href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="">
-                                    <a href="{{ route('home') }}">Services
-                                    </li>
+                                    <a href="{{ route('home') }}">Services</a>
+                                    <ul>
+                                <li><a href="blog.html">Web Development</a></li>
+                                <li><a href="blog.html">Search Engine Optimizations</a></li>
+                            </ul>
+                                </li>
                                      <li class="">
                                     <a href="{{ route('home') }}">Shop
                                     </li>
