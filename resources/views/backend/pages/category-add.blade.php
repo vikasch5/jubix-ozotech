@@ -69,7 +69,7 @@
                                         @enderror
                                     </div>
                                     <!-- Category Image -->
-                                    <div class="col-md-4 mb-3">
+                                    {{-- <div class="col-md-4 mb-3">
                                         <label class="form-label">Category Image</label>
                                         <input type="file" name="category_image" class="form-control">
                                         @if(optional($category)->image)
@@ -79,7 +79,7 @@
                                         @error('category_image')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <!-- Meta Title -->
                                     <div class="col-md-8 mb-3">
@@ -112,14 +112,14 @@
                                     </div>
 
                                     <!-- Description -->
-                                    <div class="col-md-12 mb-3">
+                                    {{-- <div class="col-md-12 mb-3">
                                         <label class="form-label">Description</label>
                                         <textarea name="description" rows="4" class="form-control"
                                             placeholder="Category Description">{{ optional($category)->description }}</textarea>
                                         @error('description')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <!-- Submit Button -->
                                     <div class="col-md-12">

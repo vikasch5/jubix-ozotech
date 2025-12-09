@@ -32,10 +32,36 @@
                 </li>
                 <li class="slide">
                     <a href="{{ route('admin.service.list') }}"
-                        class="side-menu__item {{ in_array(Route::currentRouteName(),['admin.service.list','admin.service.add']) ? 'active' : '' }}">
-                        <i class="side-menu__icon ri-service-line"></i> 
+                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.service.list', 'admin.service.add']) ? 'active' : '' }}">
+                        <i class="side-menu__icon ri-service-line"></i>
                         <span class="side-menu__label">Services</span>
                     </a>
+                </li>
+                <li
+                    class="slide has-sub {{ in_array(Route::currentRouteName(), ['admin.category.index', 'admin.category.add', 'admin.sub.category.index', 'admin.sub.category.add']) ? 'active' : '' }}">
+                    <a href="javascript:void(0);"
+                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.category.index', 'admin.category.add', 'admin.sub.category.index', 'admin.sub.category.add']) ? 'active' : '' }}">
+                        <i class="ri-arrow-right-s-line side-menu__angle"></i>
+                        <i class="side-menu__icon ri-newspaper-line"></i>
+                        <span class="side-menu__label">Manage Products</span>
+                    </a>
+
+                    <ul class="slide-menu child1">
+                        <li class="slide">
+                            <a href="{{ route('admin.category.index') }}"
+                                class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.category.index', 'admin.category.add']) ? 'active' : '' }}">
+                                Category
+                            </a>
+                        </li>
+
+                        <li class="slide">
+                            <a href="{{ route('admin.sub.category.index') }}"
+                                class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.sub.category.index', 'admin.sub.category.add']) ? 'active' : '' }}">Sub
+                                Category</a>
+                        </li>
+
+
+                    </ul>
                 </li>
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"

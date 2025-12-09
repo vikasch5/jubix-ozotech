@@ -89,7 +89,7 @@
                                     </div> --}}
 
                                     <!-- Category Image -->
-                                    <div class="col-md-4 mb-3">
+                                    {{-- <div class="col-md-4 mb-3">
                                         <label class="form-label">Category Image</label>
                                         <input type="file" name="sub_category_image" class="form-control">
 
@@ -103,7 +103,7 @@
                                             <img src="{{ asset('uploads/sub-category/' . $category->image) }}"
                                                 style="width: 100px; margin-top: 8px; border-radius: 6px;">
                                         </div>
-                                    @endif
+                                    @endif --}}
 
 
                                     <!-- Meta Title -->
