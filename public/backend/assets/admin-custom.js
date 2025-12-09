@@ -115,7 +115,7 @@ $(document).on('click', '.deleteRecord', function () {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                type: 'POST',
+                type: 'DELETE',
                 url: actionUrl,
                 data: { id: courseId },
                 headers: {

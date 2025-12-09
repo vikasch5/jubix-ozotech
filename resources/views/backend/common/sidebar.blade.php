@@ -30,6 +30,13 @@
                         <span class="side-menu__label">Dashboards</span>
                     </a>
                 </li>
+                <li class="slide">
+                    <a href="{{ route('admin.service.list') }}"
+                        class="side-menu__item {{ in_array(Route::currentRouteName(),['admin.service.list','admin.service.add']) ? 'active' : '' }}">
+                        <i class="side-menu__icon ri-service-line"></i> 
+                        <span class="side-menu__label">Services</span>
+                    </a>
+                </li>
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"
                     height="24" viewBox="0 0 24 24">
