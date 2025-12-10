@@ -3,12 +3,15 @@
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\CategoryContoller;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
+Route::get('services/{slug?}', [FrontendController::class, 'serviceDetail'])->name('service.details');
+Route::get('product/{slug?}/{subSlug?}', [FrontendController::class, 'productList'])->name('product.list');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login.form');
@@ -31,5 +34,8 @@ Route::prefix('admin')->group(function () {
         Route::get('sub-category-add/{id?}', [CategoryContoller::class, 'subCategoryAddIndex'])->name('admin.sub.category.add');
         Route::post('sub-category-save', [CategoryContoller::class, 'subCategoryStorOrUpdate'])->name('admin.sub.category.store-or-update');
         Route::delete('sub-category-delete', [CategoryContoller::class, 'deleteSubCategory'])->name('admin.sub.category.delete');
+
+        Route::get('product-add', [ProductController::class, 'productAddIndex'])->name('admin.product.add');
+        Route::get('product-save', [ProductController::class, 'productAddIndex'])->name('admin.products.store');
     });
 });

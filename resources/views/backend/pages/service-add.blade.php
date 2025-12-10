@@ -40,14 +40,6 @@
                                         <input type="text" name="slug" class="form-control required"
                                             value="{{ optional($service)->slug }}" placeholder="service-slug">
                                     </div>
-
-                                    <!-- Description -->
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Description</label>
-                                        <textarea name="description" rows="4" class="form-control"
-                                            placeholder="Service Description">{{ optional($service)->description }}</textarea>
-                                    </div>
-
                                     <!-- Status -->
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Status</label>
@@ -56,6 +48,15 @@
                                             <option value="0" @selected(optional($service)->status == 0)>Inactive</option>
                                         </select>
                                     </div>
+
+                                    <!-- Description -->
+                                    <div class="col-md-12 mb-3">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="description" rows="4" class="form-control" id="summernote"
+                                            placeholder="Service Description">{{ optional($service)->description }}</textarea>
+                                    </div>
+
+
 
                                     <!-- Image -->
                                     {{-- <div class="col-md-4 mb-3">
@@ -68,10 +69,10 @@
                                     <div class="col-md-12 mb-3">
                                         <div id="preview_image">
                                             @if(!empty($service->image))
-                                                <div class="position-relative uploaded-image">
-                                                    <img src="{{ asset($service->image) }}"
-                                                        style="width:180px;height:120px;object-fit:cover;border-radius:5px;">
-                                                </div>
+                                            <div class="position-relative uploaded-image">
+                                                <img src="{{ asset($service->image) }}"
+                                                    style="width:180px;height:120px;object-fit:cover;border-radius:5px;">
+                                            </div>
                                             @endif
                                         </div>
                                     </div> --}}
@@ -107,11 +108,11 @@
 
             reader.onload = function (e) {
                 $('#preview_image').html(`
-                    <div class="position-relative new-preview">
-                        <img src="${e.target.result}"
-                             style="width:180px;height:120px;object-fit:cover;border-radius:5px;">
-                    </div>
-                `);
+                        <div class="position-relative new-preview">
+                            <img src="${e.target.result}"
+                                 style="width:180px;height:120px;object-fit:cover;border-radius:5px;">
+                        </div>
+                    `);
             };
 
             reader.readAsDataURL(file);

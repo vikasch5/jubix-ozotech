@@ -18,4 +18,9 @@ class Category extends Model
         'description',
         'show_on_home'
     ];
+
+     public function subCategories()
+    {
+        return $this->hasMany(SubCategory::class, 'category_id', 'id');
+    }
 }

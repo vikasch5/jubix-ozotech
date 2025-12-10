@@ -1,58 +1,7 @@
 @extends('frontend.common.master')
 @section('content')
     <style>
-        .product-inquiry {
-            margin-top: 12px;
-        }
-
-        .action-btn {
-            display: flex;
-            align-items: center;
-            /* gap: 6px; */
-            padding: 10px 14px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            color: #fff;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-            transition: all 0.35s ease;
-            white-space: nowrap;
-        }
-
-        .action-btn i {
-            font-size: 14px;
-        }
-
-        /* WhatsApp */
-        .action-btn.whatsapp {
-            background: linear-gradient(135deg, #25D366, #1DA851);
-        }
-
-        /* Call */
-        .action-btn.call {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-        }
-
-        /* Enquiry */
-        .action-btn.enquiry {
-            background: linear-gradient(135deg, #ff7a18, #ff3d00);
-        }
-
-        /* Hover Effects */
-        .action-btn:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
-            color: #fff;
-        }
-
-        /* Mobile Optimization */
-        @media (max-width: 575px) {
-            .action-btn {
-                padding: 9px 12px;
-                font-size: 12px;
-            }
-        }
+        
     </style>
     <main class="main">
         <div class="intro-section">
@@ -428,25 +377,25 @@
                                 {{-- <div class="product-price">
                                     <ins class="new-price">$45.62 - $58.28</ins>
                                 </div> --}}
-                                <div class="product-inquiry mt-3 d-flex justify-content-center gap-2">
-                                    <a href="https://wa.me/919999999999?text=Hi, I am interested in this product"
-                                        target="_blank" class="action-btn whatsapp mr-1">
-                                        <i class="fab fa-whatsapp fa-2x"></i>
-                                        <span></span>
-                                    </a>
+                                    <div class="product-inquiry mt-3 d-flex justify-content-center gap-2">
+                                        <a href="https://wa.me/919999999999?text=Hi, I am interested in this product"
+                                            target="_blank" class="action-btn whatsapp mr-1">
+                                            <i class="fab fa-whatsapp fa-2x"></i>
+                                            <span></span>
+                                        </a>
 
-                                    <a href="tel:+919999999999" class="action-btn call mr-1">
-                                        <i class="w-icon-phone"></i>
-                                        <span></span>
-                                    </a>
+                                        <a href="tel:+919999999999" class="action-btn call mr-1">
+                                            <i class="w-icon-phone"></i>
+                                            <span></span>
+                                        </a>
 
-                                    <a href="#" class="action-btn enquiry" data-bs-toggle="modal"
-                                        data-bs-target="#enquiryModal">
-                                        <i class="fas fa-envelope fa-2x"></i>
-                                        <span></span>
-                                    </a>
+                                        <a href="#" class="action-btn enquiry" data-bs-toggle="modal"
+                                            data-bs-target="#enquiryModal">
+                                            <i class="fas fa-envelope fa-2x"></i>
+                                            <span></span>
+                                        </a>
 
-                                </div>
+                                    </div>
 
                             </div>
                         </div>

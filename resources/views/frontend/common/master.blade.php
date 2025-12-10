@@ -662,10 +662,10 @@
     
     <script src="{{ asset('frontend/vendor/swiper/swiper-bundle.min.js')}}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> --}}
-    <script src="{{ asset('frontend/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
-    <script src="{{ asset('frontend/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{ asset('frontend/vendor/floating-parallax/parallax.min.js')}}"></script>
-    <script src="{{ asset('frontend/vendor/zoom/jquery.zoom.js')}}"></script>
+    <script defer src="{{ asset('frontend/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
+    <script defer src="{{ asset('frontend/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+    <script defer src="{{ asset('frontend/vendor/floating-parallax/parallax.min.js')}}"></script>
+    <script defer src="{{ asset('frontend/vendor/zoom/jquery.zoom.js')}}"></script>
 
     <!-- Main Js -->
     <script src="{{ asset('frontend/js/main.min.js')}}"></script>
@@ -676,7 +676,7 @@
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         data-cf-beacon='{"version":"2024.11.0","token":"ecd4920e43e14654b78e65dbf8311922","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
         crossorigin="anonymous"></script> --}}
-    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9a8c35f13d451afa',t:'MTc2NDg2MDgxOA=='};var a=document.createElement('script');a.src='{{ asset("frontend/js/maind41d.js")}}';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    {{-- <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9a8c35f13d451afa',t:'MTc2NDg2MDgxOA=='};var a=document.createElement('script');a.src='{{ asset("frontend/js/maind41d.js")}}';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script> --}}
 </body>
 
 </html>
