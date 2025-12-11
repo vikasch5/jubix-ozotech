@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
 Route::get('services/{slug?}', [FrontendController::class, 'serviceDetail'])->name('service.details');
-Route::get('product/{slug?}/{subSlug?}', [FrontendController::class, 'productList'])->name('product.list');
+Route::get('products/{slug?}/{subSlug?}', [FrontendController::class, 'productList'])->name('product.list');
+Route::get('product/{slug?}', [FrontendController::class, 'productDetail'])->name('product.detail');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login.form');

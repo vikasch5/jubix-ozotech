@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -18,34 +19,43 @@ class ProductController extends Controller
     }
     public function productAddIndex($id = null)
     {
-        $product = $id ? Product::find($id) : [];
+        $product = $id ? Product::find($id) : null;
         $categories = Category::where('status', '1')->get();
-        $subcategories = SubCategory::where('status', '1')->where('category_id', $product->category_id)->get();
+        $subcategories = SubCategory::where('status', '1')->where('category_id', optional($product)->category_id)->get();
         return view('backend.pages.product-add', compact('product', 'categories', 'subcategories'));
     }
 
     public function storeOrUpdate(Request $request)
     {
         $id = $request->product_id;
-        $validator = \Validator::make($request->all(), [
-            'product_name' => 'required|string|max:255',
-            'category_id' => 'required|integer',
-            'sub_category_id' => 'nullable|integer',
-            'price' => 'required|numeric',
-            'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'status' => 'required|in:0,1',
-            'description' => 'nullable|string',
-            'remove_images' => 'array',
-            'remove_images.*' => 'string',
+
+        // ==========================
+        // VALIDATION
+        // ==========================
+        $validator = Validator::make($request->all(), [
+            'product_name'     => 'required|string|max:255',
+            'category_id'      => 'required|integer',
+            'sub_category_id'  => 'nullable|integer',
+            'price'            => 'required|numeric',
+            'images.*'         => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'status'           => 'required|in:0,1',
+            'description'      => 'nullable|string',
+
+            // for deleting images
+            'remove_images'    => 'nullable|array',
+            'remove_images.*'  => 'string',
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'errors' => $validator->errors(),
+                'errors'  => $validator->errors()
             ], 422);
         }
 
+        // ==========================
+        // FIND OR CREATE PRODUCT
+        // ==========================
         $product = $id ? Product::find($id) : new Product();
 
         if ($id && !$product) {
@@ -55,45 +65,65 @@ class ProductController extends Controller
             ], 404);
         }
 
-        $product->fill([
-            'product_name' => $request->product_name,
-            'category_id' => $request->category_id,
-            'sub_category_id' => $request->sub_category_id,
-            'price' => $request->price,
-            'status' => $request->status,
-            'description' => $request->description,
-        ]);
+        // ==========================
+        // FILL BASIC DATA
+        // ==========================
+        $product->product_name    = $request->product_name;
+        $product->category_id     = $request->category_id;
+        $product->sub_category_id = $request->sub_category_id;
+        $product->price           = $request->price;
+        $product->status          = $request->status;
+        $product->description     = $request->description;
 
+        // ==========================
+        // HANDLE EXISTING IMAGES
+        // ==========================
         $existingImages = $product->images ? json_decode($product->images, true) : [];
 
-        if ($request->remove_images) {
-            foreach ($request->remove_images as $img) {
-
-                if (Storage::disk('public')->exists($img)) {
-                    Storage::disk('public')->delete($img);
+        // ---- Delete old images if requested ----
+        if (!empty($request->remove_images)) {
+            foreach ($request->remove_images as $path) {
+                if (Storage::disk('public')->exists($path)) {
+                    Storage::disk('public')->delete($path);
                 }
 
-                $existingImages = array_filter($existingImages, fn($i) => $i !== $img);
+                // Remove from list
+                $existingImages = array_filter($existingImages, function ($img) use ($path) {
+                    return $img !== $path;
+                });
             }
         }
 
+        // ==========================
+        // HANDLE NEW UPLOADED IMAGES
+        // ==========================
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $img) {
-                $fileName = uniqid() . '.' . $img->getClientOriginalExtension();
-                $path = $img->storeAs('products', $fileName, 'public');
+            foreach ($request->file('images') as $file) {
+
+                $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+
+                // Store in storage/app/public/products
+                $path = $file->storeAs('products', $fileName, 'public');
+
+                // Add to list
                 $existingImages[] = $path;
             }
         }
 
+        // reset array keys
         $product->images = json_encode(array_values($existingImages));
 
+        // ==========================
+        // SAVE PRODUCT
+        // ==========================
         $product->save();
 
         return response()->json([
             'success' => true,
-            'message' => $id ? 'Product Updated Successfully' : 'Product Created Successfully',
+            'message' => $id ? 'Product Updated Successfully' : 'Product Created Successfully'
         ]);
     }
+
 
 
     public function delete(Request $request)
@@ -156,5 +186,4 @@ class ProductController extends Controller
 
         return response()->json(['success' => true]);
     }
-
 }
