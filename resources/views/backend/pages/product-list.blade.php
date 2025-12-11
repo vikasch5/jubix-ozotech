@@ -13,7 +13,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div class="card-title">Products List</div>
                         <div class="right-btn">
-                            <a href="{{ route('admin.products.add') }}"
+                            <a href="{{ route('admin.product.add') }}"
                                class="btn btn-primary-light btn-wave">
                                 Add Product
                             </a>
@@ -53,7 +53,7 @@
                                             <td>{{ $product->product_name }}</td>
 
                                             <td>
-                                                {{ optional($product->category)->name }}
+                                                {{ optional($product->category)->category_name }}
                                             </td>
 
                                             <td>
@@ -86,7 +86,7 @@
                                                        value="{{ route('admin.products.delete') }}">
 
                                                 <div class="hstack gap-2 fs-15">
-                                                    <a href="{{ route('admin.products.add', $product->id) }}"
+                                                    <a href="{{ route('admin.product.add', $product->id) }}"
                                                        class="btn btn-icon btn-sm btn-info-transparent rounded-pill">
                                                         <i class="ri-edit-line"></i>
                                                     </a>

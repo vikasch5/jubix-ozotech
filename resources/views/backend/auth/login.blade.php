@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-nav-layout="vertical" data-vertical-style="overlay" data-theme-mode="light"
     data-header-styles="light" data-menu-styles="light" data-toggled="close">
-
-
-<!-- Mirrored from laravelui.spruko.com/zynix/signin-basic by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Oct 2025 08:28:44 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
 

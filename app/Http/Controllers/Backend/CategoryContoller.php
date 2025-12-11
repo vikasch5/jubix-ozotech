@@ -91,7 +91,7 @@ class CategoryContoller
             'redirect_url' => route('admin.category.index')
         ]);
     }
-
+    
     public function delete(Request $request)
     {
         $category = Category::find($request->id);

@@ -35,7 +35,12 @@ Route::prefix('admin')->group(function () {
         Route::post('sub-category-save', [CategoryContoller::class, 'subCategoryStorOrUpdate'])->name('admin.sub.category.store-or-update');
         Route::delete('sub-category-delete', [CategoryContoller::class, 'deleteSubCategory'])->name('admin.sub.category.delete');
 
-        Route::get('product-add', [ProductController::class, 'productAddIndex'])->name('admin.product.add');
-        Route::get('product-save', [ProductController::class, 'productAddIndex'])->name('admin.products.store');
+        Route::get('product-list', [ProductController::class, 'index'])->name('admin.product.list');
+        Route::get('product-add/{id?}', [ProductController::class, 'productAddIndex'])->name('admin.product.add');
+        Route::post('product-save', [ProductController::class, 'storeOrUpdate'])->name('admin.products.store');
+        Route::delete('product-delete', [ProductController::class, 'delete'])->name('admin.products.delete');
+        Route::post('/products/delete-image', [ProductController::class, 'deleteImage'])
+        ->name('admin.products.delete-image');
+        Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');
     });
 });
