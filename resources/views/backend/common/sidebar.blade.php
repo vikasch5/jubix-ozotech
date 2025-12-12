@@ -63,9 +63,15 @@
                             <a href="{{ route('admin.product.list') }}"
                                 class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.product.list', 'admin.product.add']) ? 'active' : '' }}">Products</a>
                         </li>
-
-
+                        
                     </ul>
+                </li>
+                <li class="slide">
+                    <a href="{{ route('admin.settings') }}"
+                        class="side-menu__item {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}">
+                        <i class="side-menu__icon ri-settings-3-line"></i>
+                        <span class="side-menu__label">Settings</span>
+                    </a>
                 </li>
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"

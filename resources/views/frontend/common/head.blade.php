@@ -35,15 +35,15 @@
         crossorigin="anonymous">
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/vendor/fontawesome-free/css/all.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.min.css')}}">
+    <link rel="stylesheet" defer type="text/css" href="{{ asset('frontend/vendor/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" defer type="text/css" href="{{ asset('frontend/css/style.min.css')}}">
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" defer href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css')}}">
     {{--
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/vendor/animate/animate.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/vendor/magnific-popup/magnific-popup.min.css')}}">
+    <link rel="stylesheet" defer type="text/css" href="{{ asset('frontend/vendor/magnific-popup/magnific-popup.min.css')}}">
 
     <!-- Default CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/demo2.min.css')}}">

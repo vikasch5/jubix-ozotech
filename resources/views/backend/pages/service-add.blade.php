@@ -59,7 +59,7 @@
 
 
                                     <!-- Image -->
-                                    {{-- <div class="col-md-4 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label class="form-label">Service Image</label>
                                         <input type="file" name="image" id="service_image" class="form-control"
                                             accept="image/*">
@@ -75,7 +75,7 @@
                                             </div>
                                             @endif
                                         </div>
-                                    </div> --}}
+                                    </div>
 
                                     <!-- Submit -->
                                     <div class="col-md-12 mt-2">

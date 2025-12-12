@@ -147,16 +147,16 @@
 
                 <section class="count-section mb-10 pb-5">
                     <div class="swiper-container swiper-theme" data-swiper-options="{
-                                'slidesPerView': 1,
-                                'breakpoints': {
-                                    '768': {
-                                        'slidesPerView': 2
-                                    },
-                                    '992': {
-                                        'slidesPerView': 3
+                                    'slidesPerView': 1,
+                                    'breakpoints': {
+                                        '768': {
+                                            'slidesPerView': 2
+                                        },
+                                        '992': {
+                                            'slidesPerView': 3
+                                        }
                                     }
-                                }
-                            }">
+                                }">
                         <div class="swiper-wrapper row cols-lg-3 cols-md-2 cols-1">
                             <div class="swiper-slide counter-wrap">
                                 <div class="counter text-center">
@@ -215,20 +215,20 @@
                     <div class="awards-wrapper">
                         <h4 class="title title-center font-weight-bold mb-10 pb-1 ls-25">Awards</h4>
                         <div class="swiper-container swiper-theme" data-swiper-options="{
-                                    'spaceBetween': 20,
-                                    'slidesPerView': 1,
-                                    'breakpoints': {
-                                        '768': {
-                                            'slidesPerView': 2
-                                        },
-                                        '992': {
-                                            'slidesPerView': 3
-                                        },
-                                        '1200': {
-                                            'slidesPerView': 4
+                                        'spaceBetween': 20,
+                                        'slidesPerView': 1,
+                                        'breakpoints': {
+                                            '768': {
+                                                'slidesPerView': 2
+                                            },
+                                            '992': {
+                                                'slidesPerView': 3
+                                            },
+                                            '1200': {
+                                                'slidesPerView': 4
+                                            }
                                         }
-                                    }
-                                }">
+                                    }">
                             <div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-md-2 cols-1">
                                 <div class="swiper-slide image-box-wrapper">
                                     <div class="image-box text-center">
@@ -284,20 +284,20 @@
                         Aliquam<br>
                         maecenas ultricies mi eget mauris. Volutpat ac</p>
                     <div class="swiper-container swiper-theme" data-swiper-options="{
-                                'spaceBetween': 20,
-                                'slidesPerView': 1,
-                                'breakpoints': {
-                                    '576': {
-                                        'slidesPerView': 2
-                                    },
-                                    '768': {
-                                        'slidesPerView': 3
-                                    },
-                                    '992': {
-                                        'slidesPerView': 4
+                                    'spaceBetween': 20,
+                                    'slidesPerView': 1,
+                                    'breakpoints': {
+                                        '576': {
+                                            'slidesPerView': 2
+                                        },
+                                        '768': {
+                                            'slidesPerView': 3
+                                        },
+                                        '992': {
+                                            'slidesPerView': 4
+                                        }
                                     }
-                                }
-                            }">
+                                }">
                         <div class="swiper-wrapper row cols-xl-4 cols-lg-3 cols-sm-2 cols-1">
                             <div class="swiper-slide member-wrap">
                                 <figure class="br-lg">

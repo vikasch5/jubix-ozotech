@@ -11,11 +11,11 @@
 
                     <!-- Header -->
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <div class="card-title">Products List</div>
+                        <div class="card-title">Services List</div>
                         <div class="right-btn">
-                            <a href="{{ route('admin.products.add') }}"
+                            <a href="{{ route('admin.service.add') }}"
                                class="btn btn-primary-light btn-wave">
-                                Add Product
+                                Add Service
                             </a>
                         </div>
                     </div>
@@ -28,45 +28,32 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">S.No</th>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Price</th>
-                                        <th>Image</th>
+                                        <th>Title</th>
+                                        {{-- <th>Image</th> --}}
+                                        <th>Slug</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @if($products->count() == 0)
+                                    @if($services->count() == 0)
                                         <tr>
-                                            <td colspan="7" class="text-center py-4">
-                                                No Products Found
+                                            <td colspan="6" class="text-center py-4">
+                                                No Services Found
                                             </td>
                                         </tr>
                                     @endif
 
-                                    @foreach ($products as $product)
+                                    @foreach ($services as $service)
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
 
-                                            <td>{{ $product->product_name }}</td>
+                                            <td>{{ $service->title }}</td>
 
                                             <td>
-                                                {{ optional($product->category)->name }}
-                                            </td>
-
-                                            <td>
-                                                ₹{{ number_format($product->price, 2) }}
-                                            </td>
-
-                                            <td>
-                                                @php
-                                                    $images = $product->images ? json_decode($product->images, true) : [];
-                                                @endphp
-
-                                                @if(count($images) > 0)
-                                                    <img src="{{ asset('storage/'.$images[0]) }}"
+                                                @if($service->image)
+                                                    <img src="{{ asset('uploads/services/'.$service->image) }}"
                                                          style="width:80px;height:60px;object-fit:cover;border-radius:4px;">
                                                 @else
                                                     <span class="text-muted">No Image</span>
@@ -74,7 +61,11 @@
                                             </td>
 
                                             <td>
-                                                @if ($product->status == 1)
+                                                    {{ $service->slug }}
+                                            </td>
+
+                                            <td>
+                                                @if ($service->status == 1)
                                                     <span class="badge bg-outline-success">Active</span>
                                                 @else
                                                     <span class="badge bg-outline-secondary">Inactive</span>
@@ -83,16 +74,16 @@
 
                                             <td>
                                                 <input type="hidden" id="delete_url"
-                                                       value="{{ route('admin.products.delete') }}">
+                                                       value="{{ route('admin.service.delete') }}">
 
                                                 <div class="hstack gap-2 fs-15">
-                                                    <a href="{{ route('admin.products.add', $product->id) }}"
+                                                    <a href="{{ route('admin.service.add', $service->id) }}"
                                                        class="btn btn-icon btn-sm btn-info-transparent rounded-pill">
                                                         <i class="ri-edit-line"></i>
                                                     </a>
 
                                                     <a href="javascript:void(0);"
-                                                       data-id="{{ $product->id }}"
+                                                       data-id="{{ $service->id }}"
                                                        class="btn btn-icon btn-sm btn-danger-transparent rounded-pill deleteRecord">
                                                         <i class="ri-delete-bin-line"></i>
                                                     </a>
@@ -105,7 +96,7 @@
 
                             <!-- Pagination -->
                             <div class="m-4">
-                                {{ $products->withQueryString()->links() }}
+                                {{ $services->withQueryString()->links() }}
                             </div>
 
                         </div>

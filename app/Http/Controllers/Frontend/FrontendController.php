@@ -13,7 +13,10 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.pages.home');
+        $services = Service::where('status','1')->get();
+        $homeCategories = Category::with('products')->where([['status','1'],['show_on_home','1']])->get();
+        // dd($homeCategories);
+        return view('frontend.pages.home', compact('services','homeCategories'));
     }
     public function aboutUs()
     {

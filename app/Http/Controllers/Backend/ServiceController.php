@@ -34,7 +34,7 @@ class ServiceController extends Controller
         ]);
 
         // ---------------- SLUG AUTO-GENERATE ----------------
-        $slug = $request->slug ?: Str::slug($request->title);
+        $slug = Str::slug($request->slug) ?: Str::slug($request->title);
 
         // ---------------- CREATE / UPDATE DATA ----------------
         $data = [
