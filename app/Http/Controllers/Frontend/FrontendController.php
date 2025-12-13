@@ -34,7 +34,7 @@ class FrontendController extends Controller
         return view('frontend.pages.service-detail', compact('service'));
     }
 
-    public function productList($slug = null, $subSlug = null, Request $request)
+    public function productList(Request $request,$slug = NUll, $subSlug = Null)
     {
         $category = Category::where('slug', $slug)->first();
 
