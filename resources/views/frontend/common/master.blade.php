@@ -671,6 +671,33 @@
     <script src="{{ asset('frontend/js/main.min.js')}}"></script>
     @yield('scripts')
 
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+        const enquiryModal = document.getElementById('enquiryModal');
+
+        enquiryModal.addEventListener('show.bs.modal', function (event) {
+
+            const button = event.relatedTarget;
+
+            // Get data from button
+            const productName = button.getAttribute('data-name');
+            const productImg = button.getAttribute('data-img');
+
+            // Set modal content
+            document.getElementById('modalProductName').textContent = productName;
+            document.getElementById('modalProductNameSmall').textContent = productName;
+            document.getElementById('productNameInput').value = productName;
+
+            document.getElementById('modalProductThumb').src = productImg;
+            document.getElementById('modalProductImage').style.backgroundImage =
+                `url('${productImg}')`;
+        });
+
+    });
+</script>
+
+
     {{--
     <script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="

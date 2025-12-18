@@ -66,7 +66,7 @@
                         <h4 class="widget-title">Services</h4>
                         <ul class="widget-body">
                             @foreach ($services as $service)
-                            <li><a href="{{ route('service.details',$service->slug) }}">{{ $service->title }}</a></li>
+                                <li><a href="{{ route('service.details', $service->slug) }}">{{ $service->title }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -100,3 +100,85 @@
         </div>
     </div>
 </footer>
+
+<div class="modal fade enquiry-modal" id="enquiryModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content enquiry-glass">
+
+            <div class="row g-0">
+
+                <!-- LEFT : IMAGE PANEL -->
+                <div class="col-lg-5 d-none d-lg-block enquiry-image" id="modalProductImage">
+                    <div class="image-overlay">
+                        <h3 id="modalProductName">Product Name</h3>
+                        <p>High quality · Trusted · Fast delivery</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT : FORM PANEL -->
+                <div class="col-lg-7">
+                    <div class="p-5">
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h2 class="fw-bold mb-1">Product Enquiry</h2>
+                                <p class="text-muted mb-0">Let us know your requirement</p>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!-- Product Preview -->
+                        <div class="mini-product mb-4">
+                            <img id="modalProductThumb" src="" alt="Product">
+                            <div>
+                                <h6 id="modalProductNameSmall"></h6>
+                                <span class="badge bg-success">In Stock</span>
+                            </div>
+                        </div>
+
+                        <form>
+                            <input type="hidden" name="product_name" id="productNameInput">
+                            <div class="row g-3">
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control premium-input" placeholder="Your Name"
+                                        required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control premium-input" placeholder="Email Address"
+                                        required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control premium-input" placeholder="Phone Number"
+                                        required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control premium-input" placeholder="Quantity"
+                                        value="1">
+                                </div>
+
+                                <div class="col-12">
+                                    <textarea rows="4" class="form-control premium-input"
+                                        placeholder="Describe your requirement..."></textarea>
+                                </div>
+
+                                <div class="col-12 text-end mt-4">
+                                    <button class="btn btn-gradient px-5 py-3">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Enquiry
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

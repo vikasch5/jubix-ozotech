@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Service;
@@ -16,7 +17,10 @@ class FrontendController extends Controller
         $services = Service::where('status','1')->get();
         $homeCategories = Category::with('products')->where([['status','1'],['show_on_home','1']])->get();
         // dd($homeCategories);
-        return view('frontend.pages.home', compact('services','homeCategories'));
+        $banners = Banner::where('status', 1)
+        ->orderBy('sort_order', 'asc')
+        ->get();
+        return view('frontend.pages.home', compact('services','homeCategories','banners'));
     }
     public function aboutUs()
     {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryContoller;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ProductController;
@@ -46,5 +47,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/get-subcategories/{category_id?}', [CategoryContoller::class, 'getSubcategories'])->name('admin.get.subcategories');
         Route::get('settings/{id?}', [SettingController::class, 'index'])->name('admin.settings');
         Route::post('settings-save', [SettingController::class, 'update'])->name('admin.settings.save');
+
+        Route::get('banner-list', [BannerController::class, 'index'])->name('admin.banner.list');
+        Route::get('banner-add/{id?}', [BannerController::class, 'bannerAddIndex'])->name('admin.banner.add');
+        Route::post('banner-save', [BannerController::class, 'storeOrUpdate'])->name('admin.banner.save');
+        Route::delete('banner-delete', [BannerController::class, 'delete'])->name('admin.banner.delete');
+
     });
 });

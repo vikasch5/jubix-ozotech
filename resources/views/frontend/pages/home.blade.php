@@ -4,166 +4,58 @@
 
     </style>
     <main class="main">
-        <div class="intro-section">
-            <div class="swiper-container swiper-theme nav-inner pg-inner animation-slider pg-xxl-hide pg-show nav-xxl-show nav-hide"
-                data-swiper-options="{
-                                                            'slidesPerView': 1,
-                                                            'autoplay': {
-                                                                'delay': 4000,
-                                                                'disableOnInteraction': false
-                                                            }
-                                                        }">
-                <div class="swiper-wrapper row gutter-no cols-1">
-                    <div class="swiper-slide banner banner-fixed intro-slide intro-slide1"
-                        style="background-image: url({{ asset('frontend/images/demos/demo2/slides/slide-1.jpg')}}); background-color: #f1f0f0;">
-                        <div class="container">
-                            <figure class="slide-image floating-item slide-animate" data-animation-options="{
-                                                                            'name': 'fadeInDownShorter', 'duration': '1s'
-                                                                        }"
-                                data-options="{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}"
-                                data-child-depth="0.2">
-                                <img loading="lazy" src="{{ asset('frontend/images/demos/demo2/slides/ski.png')}}" alt="Ski" width="729"
-                                    height="570" />
-                            </figure>
-                            <div class="banner-content text-right y-50 ml-auto">
-                                <h5 class="banner-subtitle text-uppercase font-weight-bold mb-2 slide-animate"
-                                    data-animation-options="{
-                                                                                'name': 'fadeInUpShorter', 'duration': '1s'
-                                                                            }">Deals And Promotions</h5>
-                                <h3 class="banner-title ls-25 mb-6 slide-animate" data-animation-options="{
-                                                                                'name': 'fadeInUpShorter', 'duration': '1s'
-                                                                            }">Fashion <span
-                                        class="text-primary">Skiwears</span>
-                                    for
-                                    the
-                                    ardent
-                                    Sports
-                                    devotees
-                                </h3>
-                                <a href="shop-banner-sidebar.html"
-                                    class="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate"
-                                    data-animation-options="{
-                                                                                'name': 'fadeInUpShorter', 'duration': '1s'
-                                                                            }">
-                                    Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
-                            <!-- End of .banner-content -->
-                        </div>
-                        <!-- End of .container -->
-                    </div>
-                    <!-- End of .intro-slide1 -->
+        @if($banners->count())
+            <div class="intro-section">
+                <div class="swiper-container swiper-theme" data-swiper-options='{
+                        "slidesPerView": 1,
+                        "autoplay": {
+                            "delay": 4000,
+                            "disableOnInteraction": false
+                        },
+                        "loop": true
+                    }'>
 
-                    <div class="swiper-slide banner banner-fixed intro-slide intro-slide2"
-                        style="background-image: url({{ asset('frontend/images/demos/demo2/slides/slide-2.jpg')}}); background-color: #d9ddd9;">
-                        <div class="container">
-                            <figure class="slide-image floating-item slide-animate" data-animation-options="{
-                                                                            'name': 'fadeInUpShorter', 'duration': '1s'
-                                                                        }"
-                                data-options="{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}"
-                                data-child-depth="0.2">
-                                <img loading="lazy" src="{{ asset('frontend/images/demos/demo2/slides/woman.png')}}" alt="Ski" width="865"
-                                    height="732" />
-                            </figure>
-                            <div class="banner-content y-50">
-                                <h5 class="banner-subtitle text-uppercase font-weight-bold mb-2 slide-animate"
-                                    data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s', 'delay': '.5s'
-                                                                            }">News And Inspiration</h5>
-                                <h3 class="banner-title ls-25 mb-2 text-uppercase lh-1 slide-animate"
-                                    data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s', 'delay': '.7s'
-                                                                            }">Natural Sound</h3>
-                                <div class="banner-price-info font-weight-bold text-dark ls-25 slide-animate"
-                                    data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s', 'delay': '.9s'
-                                                                            }">Sale up to
-                                    <span class="text-primary font-weight-bolder text-uppercase ls-normal">30%
-                                        Off</span>
-                                </div>
-                                <p class="font-weight-normal text-default ls-25 slide-animate" data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s', 'delay': '1.1s'
-                                                                            }">Free returns extended to 30 days after
-                                    delivery
-                                </p>
-                                <a href="shop-banner-sidebar.html"
-                                    class="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate"
-                                    data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s', 'delay': '1.3s'
-                                                                            }">
-                                    Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
-                            <!-- End of .banner-content -->
-                        </div>
-                        <!-- End of .container -->
-                    </div>
-                    <!-- End of .intro-slide2 -->
+                    <div class="swiper-wrapper">
 
-                    <div class="swiper-slide banner banner-fixed intro-slide intro-slide3"
-                        style="background-image: url({{ asset('frontend/images/demos/demo2/slides/slide-3.jpg')}}); background-color: #d0cfcb;">
-                        <div class="container">
-                            <figure class="slide-image floating-item slide-animate" data-animation-options="{
-                                                                            'name': 'fadeInRightShorter', 'duration': '1s'
-                                                                        }"
-                                data-options="{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}"
-                                data-child-depth="0.2">
-                                <img loading="lazy" src="{{ asset('frontend/images/demos/demo2/slides/man.png')}}" alt="Ski" width="527"
-                                    height="481" />
-                            </figure>
-                            <div class="banner-content y-50">
-                                <h5 class="banner-subtitle text-uppercase font-weight-bold slide-animate"
-                                    data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s'
-                                                                            }">Top Monthly Seller</h5>
-                                <h4 class="banner-title ls-25 slide-animate" data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s'
-                                                                            }">Sumsung 52 Inches Full HD <span
-                                        class="text-primary">Smart
-                                        LED</span> TV
-                                </h4>
-                                <p class="font-weight-normal text-dark slide-animate" data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s'
-                                                                            }">Only until the end of this week.</p>
-                                <a href="shop-banner-sidebar.html"
-                                    class="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate"
-                                    data-animation-options="{
-                                                                                'name': 'fadeInRightShorter', 'duration': '1s'
-                                                                            }">Shop Now<i
-                                        class="w-icon-long-arrow-right"></i></a>
+                        @foreach($banners as $banner)
+                            <div class="swiper-slide">
+                                <img src="{{ asset($banner->image) }}" class="w-100 intro-img" alt="Banner {{ $loop->iteration }}">
                             </div>
-                            <!-- End of .banner-content -->
-                        </div>
-                        <!-- End of .container -->
+                        @endforeach
+
                     </div>
-                    <!-- End of .intro-slide3 -->
+
+                    <div class="swiper-pagination"></div>
+                    <button class="swiper-button-next"></button>
+                    <button class="swiper-button-prev"></button>
                 </div>
-                <div class="swiper-pagination"></div>
-                <button class="swiper-button-next"></button>
-                <button class="swiper-button-prev"></button>
             </div>
-        </div>
+        @endif
+
+
         <!-- End of .intro-section -->
 
         <div class="container">
             {{-- <div class="swiper-container swiper-theme icon-box-wrapper appear-animate br-sm mt-6 mb-10"
                 data-swiper-options="{
-                                                            'loop': true,
-                                                            'slidesPerView': 1,
-                                                            'autoplay': {
-                                                                'delay': 4000,
-                                                                'disableOnInteraction': false
-                                                            },
-                                                            'breakpoints': {
-                                                                '576': {
-                                                                    'slidesPerView': 2
-                                                                },
-                                                                '768': {
-                                                                    'slidesPerView': 3
-                                                                },
-                                                                '1200': {
-                                                                    'slidesPerView': 4
-                                                                }
-                                                            }
-                                                        }">
+                                                                        'loop': true,
+                                                                        'slidesPerView': 1,
+                                                                        'autoplay': {
+                                                                            'delay': 4000,
+                                                                            'disableOnInteraction': false
+                                                                        },
+                                                                        'breakpoints': {
+                                                                            '576': {
+                                                                                'slidesPerView': 2
+                                                                            },
+                                                                            '768': {
+                                                                                'slidesPerView': 3
+                                                                            },
+                                                                            '1200': {
+                                                                                'slidesPerView': 4
+                                                                            }
+                                                                        }
+                                                                    }">
                 <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
                     <div class="swiper-slide icon-box icon-box-side text-dark">
                         <span class="icon-box-icon icon-shipping">
@@ -212,31 +104,31 @@
                 </div>
                 <div class="swiper-container swiper-theme post-wrapper mb-10 mb-lg-5 appear-animate" data-swiper-options="{
 
-                                                                                            'spaceBetween': 20,
-                                                                                            'slidesPerView': 1,
-                                                                                            'autoplay': {
-                                                                                                'delay': 2000,
-                                                                                                'disableOnInteraction': false
-                                                                                            },
-                                                                                            'breakpoints': {
-                                                                                                '576': {
-                                                                                                    'slidesPerView': 2
-                                                                                                },
-                                                                                                '768': {
-                                                                                                    'slidesPerView': 3
-                                                                                                },
-                                                                                                '992': {
-                                                                                                    'slidesPerView': 4
-                                                                                                }
-                                                                                            }
-                                                                                        }">
+                                                                                                                    'spaceBetween': 20,
+                                                                                                                    'slidesPerView': 1,
+                                                                                                                    'autoplay': {
+                                                                                                                        'delay': 2000,
+                                                                                                                        'disableOnInteraction': false
+                                                                                                                    },
+                                                                                                                    'breakpoints': {
+                                                                                                                        '576': {
+                                                                                                                            'slidesPerView': 2
+                                                                                                                        },
+                                                                                                                        '768': {
+                                                                                                                            'slidesPerView': 3
+                                                                                                                        },
+                                                                                                                        '992': {
+                                                                                                                            'slidesPerView': 4
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }">
                     <div class="swiper-wrapper row cols-lg-4 cols-md-3 cols-sm-2 cols-1">
                         @foreach ($services as $service)
                             <div class="swiper-slide post">
                                 <figure class="post-media br-sm">
                                     <a href="{{ route('service.details', $service->slug) }}">
-                                        <img loading="lazy" src="{{ asset('uploads/services/' . $service->image)}}" alt="Post" width="620"
-                                            height="398" style="background-color: #898078;">
+                                        <img loading="lazy" src="{{ asset('uploads/services/' . $service->image)}}" alt="Post"
+                                            width="620" height="398" style="background-color: #898078;">
                                     </a>
 
                                 </figure>
@@ -265,24 +157,24 @@
                     </div>
                     <!-- End of .title-link-wrapper -->
                     <div class="swiper-container swiper-theme product-deals-wrapper appear-animate mb-7" data-swiper-options="{
-                                                                                        'spaceBetween': 20,
-                                                                                        'slidesPerView': 2,
-                                                                                        'autoplay': {
-                                                                                            'delay': 2000,
-                                                                                            'disableOnInteraction': false
-                                                                                        },
-                                                                                        'breakpoints': {
-                                                                                            '576': {
-                                                                                                'slidesPerView': 3
-                                                                                            },
-                                                                                            '768': {
-                                                                                                'slidesPerView': 4
-                                                                                            },
-                                                                                            '992': {
-                                                                                                'slidesPerView': 5
-                                                                                            }
-                                                                                        }
-                                                                                    }">
+                                                                                                                            'spaceBetween': 20,
+                                                                                                                            'slidesPerView': 2,
+                                                                                                                            'autoplay': {
+                                                                                                                                'delay': 2000,
+                                                                                                                                'disableOnInteraction': false
+                                                                                                                            },
+                                                                                                                            'breakpoints': {
+                                                                                                                                '576': {
+                                                                                                                                    'slidesPerView': 3
+                                                                                                                                },
+                                                                                                                                '768': {
+                                                                                                                                    'slidesPerView': 4
+                                                                                                                                },
+                                                                                                                                '992': {
+                                                                                                                                    'slidesPerView': 5
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }">
                         <div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-2">
                             @foreach ($homeCategory->products as $product)
                                 <div class="swiper-slide product-wrap">
@@ -303,14 +195,16 @@
                                             </div>
                                         </figure>
                                         <div class="product-details">
-                                            <h4 class="product-name"><a href="{{ route('product.detail', $product->slug) }}">{{ $product->product_name }}</a>
+                                            <h4 class="product-name"><a
+                                                    href="{{ route('product.detail', $product->slug) }}">{{ $product->product_name }}</a>
                                             </h4>
                                             {{-- <div class="ratings-container">
                                                 <div class="ratings-full">
                                                     <span class="ratings" style="width: 100%;"></span>
                                                     <span class="tooltiptext tooltip-top"></span>
                                                 </div>
-                                                <a href="{{ route('product.detail', $product->slug) }}" class="rating-reviews">(3 Reviews)</a>
+                                                <a href="{{ route('product.detail', $product->slug) }}" class="rating-reviews">(3
+                                                    Reviews)</a>
                                             </div> --}}
                                             {{-- <div class="product-price">
                                                 <ins class="new-price">$45.62 - $58.28</ins>
@@ -327,11 +221,12 @@
                                                     <span></span>
                                                 </a>
 
-                                                <a href="#" class="action-btn enquiry" data-bs-toggle="modal"
+                                                <a href="#" class="action-btn enquiry" data-bs-toggle="modal" data-name="{{ $product->product_name }}" data-img="{{ $productImage  }}"
                                                     data-bs-target="#enquiryModal">
                                                     <i class="fas fa-envelope fa-2x"></i>
                                                     <span></span>
                                                 </a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -345,28 +240,28 @@
 
             {{-- <h2 class="title text-left mb-5 appear-animate">Our Brands</h2>
             <div class="swiper-container swiper-theme brands-wrapper br-sm mb-10 appear-animate" data-swiper-options="{
-                                                            'loop': true,
-                                                            'spaceBetween': 20,
-                                                            'slidesPerView': 2,
-                                                            'autoplay': {
-                                                                'delay': 4000,
-                                                                'disableOnInteraction': false
-                                                            },
-                                                            'breakpoints': {
-                                                                '576': {
-                                                                    'slidesPerView': 3
-                                                                },
-                                                                '768': {
-                                                                    'slidesPerView': 4
-                                                                },
-                                                                '992': {
-                                                                    'slidesPerView': 6
-                                                                },
-                                                                '1200': {
-                                                                    'slidesPerView': 8
-                                                                }
-                                                            }
-                                                        }">
+                                                                        'loop': true,
+                                                                        'spaceBetween': 20,
+                                                                        'slidesPerView': 2,
+                                                                        'autoplay': {
+                                                                            'delay': 4000,
+                                                                            'disableOnInteraction': false
+                                                                        },
+                                                                        'breakpoints': {
+                                                                            '576': {
+                                                                                'slidesPerView': 3
+                                                                            },
+                                                                            '768': {
+                                                                                'slidesPerView': 4
+                                                                            },
+                                                                            '992': {
+                                                                                'slidesPerView': 6
+                                                                            },
+                                                                            '1200': {
+                                                                                'slidesPerView': 8
+                                                                            }
+                                                                        }
+                                                                    }">
                 <div class="swiper-wrapper row cols-xl-8 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                     <div class="swiper-slide">
                         <figure>
