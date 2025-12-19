@@ -13,11 +13,8 @@
                         </a>
                         <div class="widget-body">
                             <p class="widget-about-title">Got Question? Call us 24/7</p>
-                            <a href="tel:18005707777" class="widget-about-call">1-800-570-7777</a>
-                            <p class="widget-about-desc">Register now to get updates on pronot get up icons
-                                & coupons ster now toon.
-                            </p>
-
+                            <a href="tel:{{ !empty($settings->mobile_number) ? $settings->mobile_number : '0000000000' }}" class="widget-about-call">{{ !empty($settings->mobile_number) ? $settings->mobile_number : '0000000000' }}</a>
+                            <a href="mail:{{ !empty($settings->email) ? $settings->email : 'demo@gmail.com' }}" class="widget-about-call">{{ !empty($settings->email) ? $settings->email : 'demo@gmail.com' }}</a>
                             <div class="social-icons social-icons-colored">
 
                                 @if(!empty($settings->facebook))
@@ -71,25 +68,26 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="widget">
-                        <h4 class="widget-title">Customer Service</h4>
-                        <ul class="widget-body">
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Money-back guarantee!</a></li>
-                            <li><a href="#">Product Returns</a></li>
-                            <li><a href="#">Support Center</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Term and Conditions</a></li>
-                        </ul>
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="widget address-widget p-3 h-100">
+                        <h5 class="widget-title mb-2">Address</h5>
+                        <p class="mb-0 text-muted">
+                            @if(!empty($settings->address))
+                                {{ $settings->address }}
+                            @else
+                                1234 Street Name, City Name, United States
+                            @endif
+
+                        </p>
                     </div>
                 </div>
+
             </div>
         </div>
 
         <div class="footer-bottom">
             <div class="footer-left">
-                <p class="copyright">Copyright © 2021 Wolmart Store. All Rights Reserved.</p>
+                <p class="copyright">Copyright © 2021 {{ env('APP_NAME') }}. All Rights Reserved.</p>
             </div>
             <div class="footer-right">
                 <span class="payment-label mr-lg-8">We're using safe payment for</span>
@@ -136,41 +134,43 @@
                             </div>
                         </div>
 
-                        <form>
+                        <form id="enquiry-form" method="post" action="{{ route('product.enquiry.save') }}">
+                            @csrf
+
+                            <div id="enquiry-alert" class="alert d-none" role="alert"></div>
                             <input type="hidden" name="product_name" id="productNameInput">
+
                             <div class="row g-3">
-
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control premium-input" placeholder="Your Name"
-                                        required>
+                                    <input type="text" name="name" class="form-control premium-input"
+                                        placeholder="Your Name" required>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control premium-input" placeholder="Email Address"
-                                        required>
+                                    <input type="email" name="email" class="form-control premium-input"
+                                        placeholder="Email Address" required>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="tel" class="form-control premium-input" placeholder="Phone Number"
-                                        required>
+                                    <input type="tel" name="phone" class="form-control premium-input"
+                                        placeholder="Phone Number" required>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="number" class="form-control premium-input" placeholder="Quantity"
-                                        value="1">
+                                    <input type="number" name="quantity" class="form-control premium-input" value="1"
+                                        min="1">
                                 </div>
 
                                 <div class="col-12">
-                                    <textarea rows="4" class="form-control premium-input"
+                                    <textarea rows="4" name="message" class="form-control premium-input"
                                         placeholder="Describe your requirement..."></textarea>
                                 </div>
 
                                 <div class="col-12 text-end mt-4">
-                                    <button class="btn btn-gradient px-5 py-3">
+                                    <button type="submit" class="btn btn-gradient px-5 py-3">
                                         <i class="fas fa-paper-plane me-2"></i>Send Enquiry
                                     </button>
                                 </div>
-
                             </div>
                         </form>
 

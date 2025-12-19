@@ -659,9 +659,10 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="{{ asset('frontend/vendor/jquery.plugin/jquery.plugin.min.js')}}"></script>
     <script src="{{ asset('frontend/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
-    
+
     <script src="{{ asset('frontend/vendor/swiper/swiper-bundle.min.js')}}"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> --}}
+    {{--
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> --}}
     <script defer src="{{ asset('frontend/vendor/jquery.countdown/jquery.countdown.min.js')}}"></script>
     <script defer src="{{ asset('frontend/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
     <script defer src="{{ asset('frontend/vendor/floating-parallax/parallax.min.js')}}"></script>
@@ -672,38 +673,96 @@
     @yield('scripts')
 
     <script>
-document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
 
-        const enquiryModal = document.getElementById('enquiryModal');
+            const enquiryModal = document.getElementById('enquiryModal');
 
-        enquiryModal.addEventListener('show.bs.modal', function (event) {
+            enquiryModal.addEventListener('show.bs.modal', function (event) {
 
-            const button = event.relatedTarget;
+                const button = event.relatedTarget;
 
-            // Get data from button
-            const productName = button.getAttribute('data-name');
-            const productImg = button.getAttribute('data-img');
+                // Get data from button
+                const productName = button.getAttribute('data-name');
+                const productImg = button.getAttribute('data-img');
 
-            // Set modal content
-            document.getElementById('modalProductName').textContent = productName;
-            document.getElementById('modalProductNameSmall').textContent = productName;
-            document.getElementById('productNameInput').value = productName;
+                // Set modal content
+                document.getElementById('modalProductName').textContent = productName;
+                document.getElementById('modalProductNameSmall').textContent = productName;
+                document.getElementById('productNameInput').value = productName;
 
-            document.getElementById('modalProductThumb').src = productImg;
-            document.getElementById('modalProductImage').style.backgroundImage =
-                `url('${productImg}')`;
+                document.getElementById('modalProductThumb').src = productImg;
+                document.getElementById('modalProductImage').style.backgroundImage =
+                    `url('${productImg}')`;
+            });
+
         });
+    </script>
 
+    <script>
+$('#enquiry-form').on('submit', function(e) {
+    e.preventDefault();
+
+    let form  = $(this);
+    let alertBox = $('#enquiry-alert');
+    let btn = form.find('button[type="submit"]');
+
+    // Reset alert
+    alertBox.addClass('d-none').removeClass('alert-success alert-danger').html('');
+
+    btn.prop('disabled', true).html('Sending...');
+
+    $.ajax({
+        url: form.attr('action'),
+        type: 'POST',
+        data: form.serialize(),
+
+        success: function(res) {
+            if (res.status) {
+                alertBox
+                    .removeClass('d-none')
+                    .addClass('alert alert-success')
+                    .html('<i class="fas fa-check-circle me-2"></i>' + res.message);
+
+                form[0].reset();
+            }
+        },
+
+        error: function(xhr) {
+            let errors = xhr.responseJSON?.errors;
+            let errorHtml = '<ul class="mb-0 ps-3">';
+
+            if (errors) {
+                $.each(errors, function(key, val) {
+                    errorHtml += '<li>' + val[0] + '</li>';
+                });
+            } else {
+                errorHtml += '<li>Something went wrong. Please try again.</li>';
+            }
+
+            errorHtml += '</ul>';
+
+            alertBox
+                .removeClass('d-none')
+                .addClass('alert alert-danger')
+                .html(errorHtml);
+        },
+
+        complete: function() {
+            btn.prop('disabled', false)
+               .html('<i class="fas fa-paper-plane me-2"></i>Send Enquiry');
+        }
     });
+});
 </script>
-
 
     {{--
     <script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         data-cf-beacon='{"version":"2024.11.0","token":"ecd4920e43e14654b78e65dbf8311922","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
         crossorigin="anonymous"></script> --}}
-    {{-- <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9a8c35f13d451afa',t:'MTc2NDg2MDgxOA=='};var a=document.createElement('script');a.src='{{ asset("frontend/js/maind41d.js")}}';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script> --}}
+    {{--
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9a8c35f13d451afa',t:'MTc2NDg2MDgxOA=='};var a=document.createElement('script');a.src='{{ asset("frontend / js / maind41d.js")}}';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    --}}
 </body>
 
 </html>

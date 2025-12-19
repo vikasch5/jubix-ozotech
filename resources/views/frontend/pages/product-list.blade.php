@@ -464,7 +464,7 @@
                                                 </a>
 
                                                 <!-- Enquiry Modal -->
-                                                <a href="#" class="action-btn enquiry" data-bs-toggle="modal"
+                                                <a href="#" class="action-btn enquiry" data-bs-toggle="modal" data-name="{{ $product->product_name }}" data-img="{{ $productImage  }}"
                                                     data-bs-target="#enquiryModal" data-product="{{ $product->product_name }}">
                                                     <i class="fas fa-envelope fa-2x"></i>
                                                 </a>

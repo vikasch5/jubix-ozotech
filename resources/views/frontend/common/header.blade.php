@@ -50,7 +50,7 @@
                 <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
                 </a>
                 <a href="{{ route('home') }}" class="logo ml-lg-0">
-                    <img style="height:60px;width:auto" src="{{ asset('frontend/images/logo.jpg') }}" alt="logo"
+                    <img style="height:60px;width:auto" src="{{ asset(optional($settings)->logo) }}"  alt="logo"
                         width="144" height="45" />
                 </a>
                 <nav class="main-nav">
@@ -75,7 +75,7 @@
                                     <ul>
                                         @foreach ($categories as $category)
                                             <li><a
-                                                    href="{{ route('service.details', $category->slug) }}">{{ $category->category_name }}</a>
+                                                    href="{{ route('product.list', $category->slug) }}">{{ $category->category_name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>

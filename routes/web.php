@@ -15,6 +15,7 @@ Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about.us')
 Route::get('services/{slug?}', [FrontendController::class, 'serviceDetail'])->name('service.details');
 Route::get('products/{slug?}/{subSlug?}', [FrontendController::class, 'productList'])->name('product.list');
 Route::get('product/{slug?}', [FrontendController::class, 'productDetail'])->name('product.detail');
+Route::post('enquiry-save', [FrontendController::class, 'enquirySave'])->name('product.enquiry.save');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login.form');

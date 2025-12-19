@@ -80,6 +80,26 @@
                                             placeholder="Meta Keywords">{{ $setting->meta_keywords ?? '' }}</textarea>
                                     </div>
 
+                                    <div class="col-md-12">
+                                        <h5 class="fw-bold">Contact Information</h5>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone Number"
+                                            value="{{ $setting->mobile_number ?? '' }}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="text" name="email" class="form-control" placeholder="Email"
+                                            value="{{ $setting->email ?? '' }}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Address</label>
+                                        <input type="text" name="address" class="form-control" placeholder="Address"
+                                            value="{{ $setting->address ?? '' }}">
+                                    </div>
+
                                     <!-- Social Links -->
                                     <div class="col-md-12">
                                         <h5 class="fw-bold">Social Media Links</h5>
