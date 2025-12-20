@@ -50,7 +50,7 @@
                 <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
                 </a>
                 <a href="{{ route('home') }}" class="logo ml-lg-0">
-                    <img style="height:60px;width:auto" src="{{ asset(optional($settings)->logo) }}"  alt="logo"
+                    <img style="max-height:60px;width:auto" src="{{ asset(optional($settings)->logo) }}" alt="logo"
                         width="144" height="45" />
                 </a>
                 <nav class="main-nav">
@@ -83,10 +83,10 @@
                         </li>
 
                         <li>
-                            <a href="about-us.html">About Us</a>
+                            <a href="{{ route('about.us') }}">About Us</a>
                         </li>
                         <li>
-                            <a href="about-us.html">Contact Us</a>
+                            <a href="{{ route('contact.us') }}">Contact Us</a>
                         </li>
 
                     </ul>
@@ -266,25 +266,27 @@
                             </ul>
                         </div>
                     </div>
-                    <form method="get" action="#"
+                    <form id="searchForm"
                         class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper mr-4 ml-4">
+
                         <div class="select-box">
-                            <select id="category" name="category">
-                                <option value="">All Categories</option>
+                            <select id="category">
+                                <option value="">all</option>
                                 @foreach ($categories as $category)
-                                    <li>
-                                        <option value="{{ $category->id }}">
-                                            {{ $category->category_name }}
-                                        </option>
-                                    </li>
+                                    <option value="{{ $category->slug }}">
+                                        {{ $category->category_name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
-                        <input type="text" class="form-control" name="search" id="search" placeholder="Search in..."
-                            required />
-                        <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
+
+                        <input type="text" class="form-control" id="search" placeholder="Search products..." required>
+
+                        <button class="btn btn-search" type="submit">
+                            <i class="w-icon-search"></i>
                         </button>
                     </form>
+
                 </div>
                 {{-- <div class="header-right pr-0 ml-4">
                     <a href="#" class="d-xl-show mr-6"><i class="w-icon-map-marker mr-1"></i>Track Order</a>
@@ -294,3 +296,17 @@
         </div>
     </div>
 </header>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const category = document.getElementById('category').value || 'all';
+        const query = document.getElementById('search').value.trim();
+
+        if (!query) return;
+
+        const url = `/search/${encodeURIComponent(category)}/${encodeURIComponent(query)}`;
+        window.location.href = url;
+    });
+</script>

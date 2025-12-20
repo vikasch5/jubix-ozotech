@@ -84,26 +84,26 @@
 
                 {{-- <div class="shop-default-brands mb-5">
                     <div class="brands-swiper swiper-container swiper-theme " data-swiper-options="{
-                                                                'slidesPerView': 2,
-                                                                'breakpoints': {
-                                                                    '576': {
-                                                                        'slidesPerView': 3
+                                                                    'slidesPerView': 2,
+                                                                    'breakpoints': {
+                                                                        '576': {
+                                                                            'slidesPerView': 3
+                                                                        },
+                                                                        '768': {
+                                                                            'slidesPerView': 4
+                                                                        },
+                                                                        '992': {
+                                                                            'slidesPerView': 6
+                                                                        },
+                                                                        '1200': {
+                                                                            'slidesPerView': 7
+                                                                        }
                                                                     },
-                                                                    '768': {
-                                                                        'slidesPerView': 4
-                                                                    },
-                                                                    '992': {
-                                                                        'slidesPerView': 6
-                                                                    },
-                                                                    '1200': {
-                                                                        'slidesPerView': 7
+                                                                    'autoplay': {
+                                                                        'delay': 4000,
+                                                                        'disableOnInteraction': false
                                                                     }
-                                                                },
-                                                                'autoplay': {
-                                                                    'delay': 4000,
-                                                                    'disableOnInteraction': false
-                                                                }
-                                                            }">
+                                                                }">
                         <div class="swiper-wrapper row gutter-no cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                             <div class="swiper-slide">
                                 <figure>
@@ -156,27 +156,27 @@
                 <!-- Start of Shop Category -->
                 {{-- <div class="shop-default-category category-ellipse-section mb-6">
                     <div class="swiper-container swiper-theme shadow-swiper" data-swiper-options="{
-                                                            'spaceBetween': 20,
-                                                            'slidesPerView': 2,
-                                                            'breakpoints': {
-                                                                '480': {
-                                                                    'slidesPerView': 3
-                                                                },
-                                                                '576': {
-                                                                    'slidesPerView': 4
-                                                                },
-                                                                '768': {
-                                                                    'slidesPerView': 6
-                                                                },
-                                                                '992': {
-                                                                    'slidesPerView': 7
-                                                                },
-                                                                '1200': {
-                                                                    'slidesPerView': 8,
-                                                                    'spaceBetween': 30
+                                                                'spaceBetween': 20,
+                                                                'slidesPerView': 2,
+                                                                'breakpoints': {
+                                                                    '480': {
+                                                                        'slidesPerView': 3
+                                                                    },
+                                                                    '576': {
+                                                                        'slidesPerView': 4
+                                                                    },
+                                                                    '768': {
+                                                                        'slidesPerView': 6
+                                                                    },
+                                                                    '992': {
+                                                                        'slidesPerView': 7
+                                                                    },
+                                                                    '1200': {
+                                                                        'slidesPerView': 8,
+                                                                        'spaceBetween': 30
+                                                                    }
                                                                 }
-                                                            }
-                                                        }">
+                                                            }">
                         <div class="swiper-wrapper row gutter-lg cols-xl-8 cols-lg-7 cols-md-6 cols-sm-4 cols-xs-3 cols-2">
                             <div class="swiper-slide category-wrap">
                                 <div class="category category-ellipse">
@@ -329,19 +329,24 @@
                                     <a href="#" class="btn btn-dark btn-link filter-clean">Clean All</a>
                                 </div>
                                 <!-- Start of Collapsible widget -->
-                                @if($category->subCategories->count() > 0)
+                                @if($category && $category->subCategories->count() > 0)
                                     <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><label>All Categories</label></h3>
+                                        <h3 class="widget-title">
+                                            <label>All Categories</label>
+                                        </h3>
+
                                         <ul class="widget-body filter-items search-ul">
-                                            @foreach (optional($category)->subCategories as $subCategory)
-                                                <li><a
-                                                        href="{{ route('product.list', [$category->slug, $subCategory->slug]) }}">{{ $subCategory->sub_category_name }}</a>
+                                            @foreach ($category->subCategories as $subCategory)
+                                                <li>
+                                                    <a href="{{ route('product.list', [$category->slug, $subCategory->slug]) }}">
+                                                        {{ $subCategory->sub_category_name }}
+                                                    </a>
                                                 </li>
                                             @endforeach
                                         </ul>
                                     </div>
-                                    <!-- End of Collapsible Widget -->
                                 @endif
+
 
                                 <!-- Start of Collapsible Widget -->
                                 <div class="widget widget-collapsible">
@@ -376,7 +381,7 @@
                         {{-- <nav class="toolbox sticky-toolbox sticky-content fix-top">
                             <div class="toolbox-left">
                                 <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle 
-                                                                        btn-icon-left d-block d-lg-none"><i
+                                                                            btn-icon-left d-block d-lg-none"><i
                                         class="w-icon-category"></i><span>Filters</span></a>
                                 <div class="toolbox-item toolbox-sort select-box text-dark">
                                     <label>Sort By :</label>
@@ -416,7 +421,7 @@
 
                                         <!-- Product Image -->
                                         <figure class="product-media">
-                                            <a href="{{ route('product.detail',$product->slug) }}">
+                                            <a href="{{ route('product.detail', $product->slug) }}">
                                                 @php
                                                     $images = $product->images ? json_decode($product->images, true) : [];
                                                     $productImage = count($images) > 0 ? asset('storage/' . $images[0]) : asset('frontend/images/no-image.png');
@@ -432,14 +437,14 @@
 
                                             <!-- Category -->
                                             <div class="product-cat">
-                                                <a href="{{ route('product.detail',$product->slug) }}">
+                                                <a href="{{ route('product.detail', $product->slug) }}">
                                                     {{ $product->category->category_name ?? 'No Category' }}
                                                 </a>
                                             </div>
 
                                             <!-- Product Title -->
                                             <h3 class="product-name">
-                                                <a href="{{ route('product.detail',$product->slug) }}">
+                                                <a href="{{ route('product.detail', $product->slug) }}">
                                                     {{ $product->product_name }}
                                                 </a>
                                             </h3>
@@ -453,18 +458,20 @@
                                             <div class="product-inquiry mt-3 d-flex justify-content-center gap-2">
 
                                                 <!-- WhatsApp Inquiry -->
-                                                <a href="https://wa.me/919999999999?text=Hi, I am interested in {{ urlencode($product->product_name) }}"
+                                                <a href="https://wa.me/{{ optional($settings)->mobile_number }}?text=Hi, I am interested in {{ urlencode($product->product_name) }}"
                                                     target="_blank" class="action-btn whatsapp mr-1">
                                                     <i class="fab fa-whatsapp fa-2x"></i>
                                                 </a>
 
                                                 <!-- Call -->
-                                                <a href="tel:+919999999999" class="action-btn call mr-1">
+                                                <a href="tel:{{ optional($settings)->mobile_number }}"
+                                                    class="action-btn call mr-1">
                                                     <i class="w-icon-phone"></i>
                                                 </a>
 
                                                 <!-- Enquiry Modal -->
-                                                <a href="#" class="action-btn enquiry" data-bs-toggle="modal" data-name="{{ $product->product_name }}" data-img="{{ $productImage  }}"
+                                                <a href="#" class="action-btn enquiry" data-bs-toggle="modal"
+                                                    data-name="{{ $product->product_name }}" data-img="{{ $productImage  }}"
                                                     data-bs-target="#enquiryModal" data-product="{{ $product->product_name }}">
                                                     <i class="fas fa-envelope fa-2x"></i>
                                                 </a>

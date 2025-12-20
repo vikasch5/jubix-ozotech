@@ -85,6 +85,9 @@ class SettingController
         $setting->meta_title       = $request->meta_title;
         $setting->meta_description = $request->meta_description;
         $setting->meta_keywords    = $request->meta_keywords;
+        $setting->mobile_number    = $request->phone;
+        $setting->email            = $request->email;
+        $setting->address          = $request->address;
 
         $setting->instagram = $request->instagram;
         $setting->facebook  = $request->facebook;

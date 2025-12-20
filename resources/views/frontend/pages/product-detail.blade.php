@@ -5,6 +5,7 @@
     @php
         // Decode product images JSON
         $images = $product->images ? json_decode($product->images, true) : [];
+        $productImage = count($images) > 0 ? asset('storage/' . $images[0]) : asset('frontend/images/no-image.png');
     @endphp
 
     <main class="main mb-10 pb-1">
@@ -52,11 +53,11 @@
 
                             <!-- Thumbnail Slider -->
                             <div class="product-thumbs-wrap swiper-container" data-swiper-options="{
-                                        'navigation': { 'nextEl': '.swiper-button-next', 'prevEl': '.swiper-button-prev' },
-                                        'breakpoints': {
-                                            '992': { 'direction': 'vertical', 'slidesPerView': 'auto' }
-                                        }
-                                     }">
+                                            'navigation': { 'nextEl': '.swiper-button-next', 'prevEl': '.swiper-button-prev' },
+                                            'breakpoints': {
+                                                '992': { 'direction': 'vertical', 'slidesPerView': 'auto' }
+                                            }
+                                         }">
 
                                 <div class="product-thumbs swiper-wrapper row cols-lg-1 cols-4 gutter-sm">
                                     @foreach ($images as $img)
@@ -117,18 +118,19 @@
                                 <div class="product-inquiry mt-3 d-flex justify-content-center gap-2">
 
                                     <!-- WhatsApp Inquiry -->
-                                    <a href="https://wa.me/919999999999?text=Hi, I am interested in {{ urlencode($product->product_name) }}"
+                                    <a href="https://wa.me/{{ optional($settings)->mobile_number }}?text=Hi, I am interested in {{ urlencode($product->product_name) }}"
                                         target="_blank" class="action-btn whatsapp mr-1">
                                         <i class="fab fa-whatsapp fa-2x"></i>
                                     </a>
 
                                     <!-- Call -->
-                                    <a href="tel:+919999999999" class="action-btn call mr-1">
+                                    <a href="tel:{{ optional($settings)->mobile_number }}" class="action-btn call mr-1">
                                         <i class="w-icon-phone"></i>
                                     </a>
 
                                     <!-- Enquiry Modal -->
                                     <a href="#" class="action-btn enquiry" data-bs-toggle="modal"
+                                        data-name="{{ $product->product_name }}" data-img="{{ $productImage  }}"
                                         data-bs-target="#enquiryModal" data-product="{{ $product->product_name }}">
                                         <i class="fas fa-envelope fa-2x"></i>
                                     </a>
@@ -157,14 +159,14 @@
                         </div>
 
                         <div class="swiper-container swiper-theme" data-swiper-options="{
-                                    'spaceBetween': 20,
-                                    'slidesPerView': 2,
-                                    'breakpoints': {
-                                        '576': { 'slidesPerView': 3 },
-                                        '768': { 'slidesPerView': 4 },
-                                        '992': { 'slidesPerView': 4 }
-                                    }
-                                }">
+                                            'spaceBetween': 20,
+                                            'slidesPerView': 2,
+                                            'breakpoints': {
+                                                '576': { 'slidesPerView': 3 },
+                                                '768': { 'slidesPerView': 4 },
+                                                '992': { 'slidesPerView': 4 }
+                                            }
+                                        }">
 
                             <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
 

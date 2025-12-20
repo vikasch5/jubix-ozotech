@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Description" content="ZYNIX - Laravel Bootstrap 5 Premium Admin &amp; Dashboard Template">
-    <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="keywords"
-        content="laravel template, laravel admin, laravel dashboard, laravel admin panel, laravel admin template, dashboard for laravel, admin panel for laravel, template dashboard, bootstrap dashboard, dashboard template, bootstrap admin template, bootstrap 5 admin template, admin template, admin panel in laravel">
+    <meta name="Description" content="">
+    <meta name="Author" content="">
+    <meta name="keywords" content="">
 
-    <title>Admin Panel - News</title>
+    <title>Admin Panel - {{ env('APP_NAME') }}</title>
 
     <!-- FAVICON -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('backend/assets/images/brand-logos/favicon.ico')}}" type="image/x-icon">
 
     <!-- BOOTSTRAP CSS -->
-    {{--
-    <link id="style" href="{{ asset('backend/assets/libs/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"> --}}
+    
+    {{-- <link id="style" href="{{ asset('backend/assets/libs/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 

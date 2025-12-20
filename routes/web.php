@@ -3,7 +3,9 @@
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryContoller;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
@@ -12,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
+Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('contact.us');
+Route::get('search/{category?}/{query?}', [FrontendController::class, 'search'])->name('search');
 Route::get('services/{slug?}', [FrontendController::class, 'serviceDetail'])->name('service.details');
 Route::get('products/{slug?}/{subSlug?}', [FrontendController::class, 'productList'])->name('product.list');
 Route::get('product/{slug?}', [FrontendController::class, 'productDetail'])->name('product.detail');
 Route::post('enquiry-save', [FrontendController::class, 'enquirySave'])->name('product.enquiry.save');
+Route::post('/contact-store', [FrontendController::class, 'contactUsSave'])->name('contact.store');
+Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy.policy');
+Route::get('/terms-conditions', [FrontendController::class, 'termsConditions'])->name('terms.conditions');
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login.form');
@@ -53,6 +60,12 @@ Route::prefix('admin')->group(function () {
         Route::get('banner-add/{id?}', [BannerController::class, 'bannerAddIndex'])->name('admin.banner.add');
         Route::post('banner-save', [BannerController::class, 'storeOrUpdate'])->name('admin.banner.save');
         Route::delete('banner-delete', [BannerController::class, 'delete'])->name('admin.banner.delete');
+        Route::get('contact-us-list', [ContactController::class, 'list'])->name('admin.contact.list');
+        Route::delete('contact-us-delete', [ContactController::class, 'delete'])->name('admin.contact.delete');
+
+        Route::get('pages-list', [PagesController::class, 'index'])->name('admin.pages.list');
+        Route::get('pages-add/{id?}', [PagesController::class, 'pagesAddIndex'])->name('admin.pages.add');
+        Route::post('pages-save', [PagesController::class, 'store'])->name('admin.pages.store-or-update');
 
     });
 });

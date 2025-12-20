@@ -34,5 +34,11 @@ class AppServiceProvider extends ServiceProvider
 
             ]);
         });
+        View::composer('backend.*', function ($view) {
+            $settings = Setting::first();
+            $view->with([
+                'settings' => $settings,
+            ]);
+        });
     }
 }

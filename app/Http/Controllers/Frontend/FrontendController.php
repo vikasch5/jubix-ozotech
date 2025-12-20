@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Enquiry;
+use App\Models\Page;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FrontendController extends Controller
 {
@@ -25,7 +28,8 @@ class FrontendController extends Controller
     }
     public function aboutUs()
     {
-        return view('frontend.pages.about-us');
+        $page = Page::where('page_name', 'about-us')->first();
+        return view('frontend.pages.about-us', compact('page'));
     }
     public function contactUs()
     {
@@ -107,5 +111,93 @@ class FrontendController extends Controller
             'status' => true,
             'message' => 'Your enquiry has been submitted successfully.'
         ]);
+    }
+
+    public function search(Request $request, $categorySlug = null, $squery = null)
+    {
+        $productsQuery = Product::query();
+        $categoryModel = null;
+
+        // =============================
+        // SEARCH QUERY
+        // =============================
+        $searchTerm = $squery ?? $request->input('q');
+
+        if (!empty($searchTerm)) {
+            $productsQuery->where(function ($q) use ($searchTerm) {
+                $q->where('product_name', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('description', 'LIKE', "%{$searchTerm}%");
+            });
+        }
+
+        // =============================
+        // CATEGORY FILTER
+        // =============================
+        if (!empty($categorySlug)) {
+            $categoryModel = Category::where('slug', $categorySlug)->first();
+
+            if ($categoryModel) {
+                $productsQuery->where('category_id', $categoryModel->id);
+            }
+        }
+
+        // =============================
+        // PAGINATION
+        // =============================
+        $products = $productsQuery
+            ->latest()
+            ->paginate(12)
+            ->appends([
+                'q' => $searchTerm
+            ]);
+
+        return view('frontend.pages.product-list', [
+            'products' => $products,
+            'category' => $categoryModel,
+            'searchTerm' => $searchTerm
+        ]);
+    }
+
+    public function contactUsSave(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'    => 'required|string|max:100',
+            'email'   => 'required|email|max:150',
+            'phone'   => 'nullable|string|max:20',
+            'subject' => 'nullable|string|max:150',
+            'message' => 'required|string|min:10',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        Contact::create([
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            'subject'    => $request->subject,
+            'message'    => $request->message,
+            'ip_address' => $request->ip(),
+        ]);
+
+        return response()->json([
+            'status'  => true,
+            'message' => 'Thank you! Your message has been sent successfully.'
+        ]);
+    }
+
+    public function privacyPolicy()
+    {
+        $page = Page::where('page_name', 'privacy-policy')->first();
+        return view('frontend.pages.privacy-policy', compact('page'));
+    }
+
+    public function termsConditions()
+    {
+        $page = Page::where('page_name', 'terms-conditions')->first();
+        return view('frontend.pages.terms-conditions', compact('page'));
     }
 }

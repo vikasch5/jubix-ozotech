@@ -13,8 +13,11 @@
                         </a>
                         <div class="widget-body">
                             <p class="widget-about-title">Got Question? Call us 24/7</p>
-                            <a href="tel:{{ !empty($settings->mobile_number) ? $settings->mobile_number : '0000000000' }}" class="widget-about-call">{{ !empty($settings->mobile_number) ? $settings->mobile_number : '0000000000' }}</a>
-                            <a href="mail:{{ !empty($settings->email) ? $settings->email : 'demo@gmail.com' }}" class="widget-about-call">{{ !empty($settings->email) ? $settings->email : 'demo@gmail.com' }}</a>
+                            <a href="tel:{{ !empty($settings->mobile_number) ? $settings->mobile_number : '0000000000' }}"
+                                class="widget-about-call">{{ !empty($settings->mobile_number) ? $settings->mobile_number : '0000000000' }}</a>
+                            <a href="mail:{{ !empty($settings->email) ? $settings->email : 'demo@gmail.com' }}"
+                                class="widget-about-call">{{ !empty($settings->email) ? $settings->email :
+                                'demo@gmail.com' }}</a>
                             <div class="social-icons social-icons-colored">
 
                                 @if(!empty($settings->facebook))
@@ -51,10 +54,10 @@
                     <div class="widget">
                         <h3 class="widget-title">Company</h3>
                         <ul class="widget-body">
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="{{ route('about.us') }}">About Us</a></li>
+                            <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
+                            <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
+                            <li><a href="{{ route('terms.conditions') }}">Terms & Conditions</a></li>
                         </ul>
                     </div>
                 </div>

@@ -1,12 +1,13 @@
 <aside class="app-sidebar sticky" id="sidebar">
 
+
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
         <a href="index.html" class="header-logo">
-            <img src="{{ asset('frontend/images/logo/logo.jpg')}}" alt="logo" class="desktop-logo">
-            <img src="{{ asset('backend/assets/images/brand-logos/toggle-dark.png')}}" alt="logo" class="toggle-dark">
-            <img src="{{ asset('backend/assets/images/brand-logos/desktop-dark.png')}}" alt="logo" class="desktop-dark">
-            <img src="{{ asset('backend/assets/images/brand-logos/toggle-logo.png')}}" alt="logo" class="toggle-logo">
+            <img src="{{ asset(optional($settings)->logo)}}" alt="logo" class="desktop-logo">
+            <img src="{{ asset(optional($settings)->logo)}}" alt="logo" class="toggle-dark">
+            <img src="{{ asset(optional($settings)->logo)}}" alt="logo" class="desktop-dark">
+            <img src="{{ asset(optional($settings)->logo)}}" alt="logo" class="toggle-logo">
         </a>
     </div>
     <!-- End::main-sidebar-header -->
@@ -63,7 +64,7 @@
                             <a href="{{ route('admin.product.list') }}"
                                 class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.product.list', 'admin.product.add']) ? 'active' : '' }}">Products</a>
                         </li>
-                        
+
                     </ul>
                 </li>
                 <li class="slide">
@@ -71,6 +72,13 @@
                         class="side-menu__item {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}">
                         <i class="side-menu__icon ri-settings-3-line"></i>
                         <span class="side-menu__label">Settings</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a href="{{ route('admin.contact.list') }}"
+                        class="side-menu__item {{ Route::currentRouteName() == 'admin.contact.list' ? 'active' : '' }}">
+                        <i class="side-menu__icon ri-contacts-line"></i>
+                        <span class="side-menu__label">Contact Us Leads</span>
                     </a>
                 </li>
             </ul>

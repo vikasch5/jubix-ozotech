@@ -485,7 +485,7 @@
     <!-- End of Mobile Menu -->
 
     <!-- Start of Quick View -->
-    <div class="product product-single product-popup">
+    {{-- <div class="product product-single product-popup">
         <div class="row gutter-lg">
             <div class="col-md-6 mb-4 mb-md-0">
                 <div class="product-gallery product-gallery-sticky">
@@ -651,7 +651,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End of Quick view -->
     {{--
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
