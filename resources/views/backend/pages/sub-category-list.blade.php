@@ -25,7 +25,7 @@
                                             <th scope="col">Category Name</th>
                                             <th scope="col">Parent Category Name</th>
                                             <th scope="col">Slug</th>
-                                            <th scope="col">Show on Homepage</th>
+                                            {{-- <th scope="col">Show on Homepage</th> --}}
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -58,13 +58,13 @@
                                                     </div>
                                                 </td>
                                                 <td>{{ $category->slug }}</td>
-                                                <td>
+                                                {{-- <td>
                                                     @if ($category->show_on_home == '1')
                                                         <span class="badge bg-outline-success">Yes</span>
                                                     @else
                                                         <span class="badge bg-outline-secondary">No</span>
                                                     @endif
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     @if ($category->status == '1')
                                                         <span class="badge bg-outline-success">Active</span>

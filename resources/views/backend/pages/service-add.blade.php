@@ -69,10 +69,10 @@
                                     <div class="col-md-12 mb-3">
                                         <div id="preview_image">
                                             @if(!empty($service->image))
-                                            <div class="position-relative uploaded-image">
-                                                <img src="{{ asset($service->image) }}"
-                                                    style="width:180px;height:120px;object-fit:cover;border-radius:5px;">
-                                            </div>
+                                                <div class="position-relative uploaded-image">
+                                                    <img src="{{ asset('uploads/services/' . $service->image) }}"
+                                                        style="width:180px;height:120px;object-fit:cover;border-radius:5px;">
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
@@ -108,11 +108,11 @@
 
             reader.onload = function (e) {
                 $('#preview_image').html(`
-                        <div class="position-relative new-preview">
-                            <img src="${e.target.result}"
-                                 style="width:180px;height:120px;object-fit:cover;border-radius:5px;">
-                        </div>
-                    `);
+                            <div class="position-relative new-preview">
+                                <img src="${e.target.result}"
+                                     style="width:180px;height:120px;object-fit:cover;border-radius:5px;">
+                            </div>
+                        `);
             };
 
             reader.readAsDataURL(file);

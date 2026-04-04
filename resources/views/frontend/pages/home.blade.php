@@ -148,7 +148,7 @@
             @if($homeCategories->count() > 0)
                 @foreach ($homeCategories as $homeCategory)
                     <div class="title-link-wrapper mb-3 appear-animate">
-                        <h2 class="title title-deals mb-1">Laptops</h2>
+                        <h2 class="title title-deals mb-1">{{ $homeCategory->category_name }}</h2>
                         <a href="{{ route('product.list', $homeCategory->slug) }}" class="font-weight-bold ls-25">More Products<i
                                 class="w-icon-long-arrow-right"></i></a>
                     </div>

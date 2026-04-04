@@ -29,7 +29,7 @@
                                     <tr>
                                         <th class="text-center">S.No</th>
                                         <th>Title</th>
-                                        {{-- <th>Image</th> --}}
+                                        <th>Image</th>
                                         <th>Slug</th>
                                         <th>Status</th>
                                         <th>Action</th>

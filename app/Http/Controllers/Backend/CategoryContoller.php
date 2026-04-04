@@ -144,7 +144,7 @@ class CategoryContoller
         ]);
 
         // Auto-generate slug if empty
-        $slug = Str::slug($request->slug) ?: Str::slug($request->category_name);
+        $slug = Str::slug($request->slug) ?: Str::slug($request->sub_category_name);
 
         // ---------------- DIMENSION CHECK ----------------
         // if ($request->hasFile('category_image')) {

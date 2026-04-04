@@ -39,7 +39,7 @@
                                     <!-- Category Slug -->
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label">Slug</label>
-                                        <input type="text" name="slug" class="form-control required"
+                                        <input type="text" name="slug" class="form-control"
                                             value="{{ optional($category)->slug }}" placeholder="Slug">
                                         @error('slug')
                                             <span class="text-danger">{{ $message }}</span>

@@ -55,22 +55,24 @@
         }
     </style>
     <main class="main">
-            <div class="page-content mb-8">
-                <div class="container">
-                    <div class="row gutter-lg">
-                        <div class="col-md-12 post-single-content">
-                            <div class="post post-grid post-single">
-                                <div class="post-details">
-                                    <h2 class="post-title text-center mt-4"><a href="#">{{ $service->title }}</a></h2>
-                                    <div class="post-content">
-                                        {!! $service->description !!}
-                                    </div>
+        <div class="page-content mb-8">
+            <div class="container">
+                <div class="row gutter-lg">
+                    <div class="col-md-12 post-single-content">
+                        <div class="post post-grid post-single">
+                            <div class="post-details">
+                                <h2 class="post-title text-center mt-4"><a href="#">{{ $service->title }}</a></h2>
+                                <img src="{{ asset('uploads/services/' . $service->image) }}" alt="{{ $service->title }}"
+                                    style="width:100%;max-height:400px;object-fit:contain;border-radius:6px;margin:20px 0;">
+                                <div class="post-content">
+                                    {!! $service->description !!}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- End of Page Content -->
-        </main>
+        </div>
+        <!-- End of Page Content -->
+    </main>
 @endsection
