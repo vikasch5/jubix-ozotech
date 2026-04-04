@@ -92,6 +92,10 @@
             <div class="footer-left">
                 <p class="copyright">Copyright © 2021 {{ env('APP_NAME') }}. All Rights Reserved.</p>
             </div>
+
+            <div class="footer-center theme-partner text-center">
+                <a href="http://vblogz.com/" style="color: #f8f8f8">Vblogz</a>
+            </div>
             <div class="footer-right">
                 <span class="payment-label mr-lg-8">We're using safe payment for</span>
                 <figure class="payment">
