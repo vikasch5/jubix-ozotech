@@ -94,7 +94,7 @@
             </div>
 
             <div class="footer-center theme-partner text-center">
-                <a href="http://vblogz.com/" style="color: #f8f8f8">Vblogz</a>
+                <a href="https://vblogz.com/" style="color: #f8f8f8">Vblogz</a>
             </div>
             <div class="footer-right">
                 <span class="payment-label mr-lg-8">We're using safe payment for</span>
