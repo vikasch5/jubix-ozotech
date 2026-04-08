@@ -95,6 +95,7 @@ class SettingController
         $setting->linkedin  = $request->linkedin;
         $setting->whatsapp  = $request->whatsapp;
         $setting->youtube   = $request->youtube;
+        $setting->copyright   = $request->copyright;
 
         $setting->save();
 

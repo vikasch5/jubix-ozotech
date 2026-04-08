@@ -58,17 +58,18 @@
                         <li class="">
                             <a href="{{ route('home') }}">Home</a>
                         </li>
-                        <li class="">
-                            <a href="{{ route('home') }}">Services</a>
-                            @if($services->count() > '0')
+                        @if($services->count() > '0')
+
+                            <li class="">
+                                <a href="{{ route('home') }}">Services</a>
                                 <ul>
                                     @foreach ($services as $service)
                                         <li><a href="{{ route('service.details', $service->slug) }}">{{ $service->title }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
-                            @endif
-                        </li>
+                            </li>
+                        @endif
                         <li class="">
                             <a href="{{ route('home') }}">Shop
                                 @if($categories->count() > '0')

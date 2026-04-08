@@ -12,7 +12,7 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="{{ asset(optional($settings)->favicon) }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('backend/assets/images/brand-logos/favicon.ico')}}" type="image/x-icon">
+    {{-- <link rel="icon" href="{{ asset('backend/assets/images/brand-logos/favicon.ico')}}" type="image/x-icon"> --}}
 
     <!-- BOOTSTRAP CSS -->
     

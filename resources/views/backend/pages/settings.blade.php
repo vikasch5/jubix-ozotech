@@ -80,6 +80,12 @@
                                             placeholder="Meta Keywords">{{ $setting->meta_keywords ?? '' }}</textarea>
                                     </div>
 
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Footer Copyright</label>
+                                        <input type="text" name="copyright" class="form-control"
+                                            value="{{ $setting->copyright ?? '' }}" placeholder="Footer Copyright Text">
+                                    </div>
+
                                     <div class="col-md-12">
                                         <h5 class="fw-bold">Contact Information</h5>
                                         <hr>

@@ -90,7 +90,7 @@
 
         <div class="footer-bottom">
             <div class="footer-left">
-                <p class="copyright">Copyright © 2021 {{ env('APP_NAME') }}. All Rights Reserved.</p>
+                <p class="copyright">{{ $settings->copyright ?? ''}}</p>
             </div>
 
             <div class="footer-center theme-partner text-center">
