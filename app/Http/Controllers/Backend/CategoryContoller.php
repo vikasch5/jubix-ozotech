@@ -30,41 +30,44 @@ class CategoryContoller
 
         // ---------------- VALIDATION ----------------
         $request->validate([
-            'category_name'     => 'required|string|max:255',
-            'slug'              => 'nullable|string|max:255|unique:categories,slug,' . $id,
-            'status'            => 'required|in:0,1',
-            'meta_title'        => 'nullable|string|max:255',
-            'meta_description'  => 'nullable|string',
-            'meta_keywords'     => 'nullable|string',
-            'description'       => 'nullable|string',
-            'category_image'    => 'nullable|image|mimes:jpeg,png,jpg|max:1024', // max 1MB
-            'show_on_home'    => 'nullable',
+            'category_name' => 'required|string|max:255',
+            'slug' => 'nullable|string|max:255|unique:categories,slug,' . $id,
+            'status' => 'required|in:0,1',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'meta_keywords' => 'nullable|string',
+            'description' => 'nullable|string',
+            'category_image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024',
+            'show_on_home' => 'nullable',
         ]);
 
         // Auto-generate slug if empty
         $slug = $request->slug ?: Str::slug($request->category_name);
 
         // ---------------- DIMENSION CHECK ----------------
-        // if ($request->hasFile('category_image')) {
-        //     [$width, $height] = getimagesize($request->category_image);
-        //     if ($width > 100 || $height > 100) {
-        //         return response()->json([
-        //             'status' => false,
-        //             'errors' => ['category_image' => 'Image dimensions must be 100x100 or less.']
-        //         ], 422);
-        //     }
-        // }
+        if ($request->hasFile('category_image')) {
+
+            $imagePath = $request->file('category_image')->getPathname();
+            [$width, $height] = getimagesize($imagePath);
+
+            if ($width > 200 || $height > 200) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Image dimensions must be 200x200 or less.'
+                ]);
+            }
+        }
 
         // ---------------- CREATE / UPDATE DATA ----------------
         $data = [
-            'category_name'    => $request->category_name,
-            'slug'             => $slug,
-            'status'           => $request->status,
-            'meta_title'       => $request->meta_title,
+            'category_name' => $request->category_name,
+            'slug' => $slug,
+            'status' => $request->status,
+            'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
-            'meta_keywords'    => $request->meta_keywords,
-            'description'      => $request->description,
-            'show_on_home'     => $request->show_on_home ?? '0',
+            'meta_keywords' => $request->meta_keywords,
+            'description' => $request->description,
+            'show_on_home' => $request->show_on_home ?? '0',
         ];
 
         $category = Category::updateOrCreate(['id' => $id], $data);
@@ -86,12 +89,12 @@ class CategoryContoller
 
         // ---------------- RESPONSE ----------------
         return response()->json([
-            'success'  => true,
+            'success' => true,
             'message' => $id ? 'Category Updated Successfully' : 'Category Created Successfully',
             'redirect_url' => route('admin.category.index')
         ]);
     }
-    
+
     public function delete(Request $request)
     {
         $category = Category::find($request->id);
@@ -131,16 +134,16 @@ class CategoryContoller
 
         // ---------------- VALIDATION ----------------
         $request->validate([
-            'sub_category_name'     => 'required|string|max:255',
-            'slug'              => 'nullable|string|max:255|unique:sub_categories,slug,' . $id,
-            'status'            => 'required|in:0,1',
-            'meta_title'        => 'nullable|string|max:255',
-            'meta_description'  => 'nullable|string',
-            'meta_keywords'     => 'nullable|string',
-            'description'       => 'nullable|string',
-            'category_image'    => 'nullable|image|mimes:jpeg,png,jpg|max:1024', // max 1MB
+            'sub_category_name' => 'required|string|max:255',
+            'slug' => 'nullable|string|max:255|unique:sub_categories,slug,' . $id,
+            'status' => 'required|in:0,1',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'meta_keywords' => 'nullable|string',
+            'description' => 'nullable|string',
+            'category_image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024', // max 1MB
             // 'show_on_home'    => 'nullable',
-            'category_id'      => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         // Auto-generate slug if empty
@@ -159,14 +162,14 @@ class CategoryContoller
 
         // ---------------- CREATE / UPDATE DATA ----------------
         $data = [
-            'category_id'       => $request->category_id,
-            'sub_category_name'    => $request->sub_category_name,
-            'slug'             => $slug,
-            'status'           => $request->status,
-            'meta_title'       => $request->meta_title,
+            'category_id' => $request->category_id,
+            'sub_category_name' => $request->sub_category_name,
+            'slug' => $slug,
+            'status' => $request->status,
+            'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
-            'meta_keywords'    => $request->meta_keywords,
-            'description'      => $request->description,
+            'meta_keywords' => $request->meta_keywords,
+            'description' => $request->description,
             // 'show_on_home'     => $request->show_on_home ?? '0',
         ];
 
@@ -189,7 +192,7 @@ class CategoryContoller
 
         // ---------------- RESPONSE ----------------
         return response()->json([
-            'success'  => true,
+            'success' => true,
             'message' => $id ? 'Sub Category Updated Successfully' : 'Sub Category Created Successfully',
             'redirect_url' => route('admin.sub.category.index')
         ]);

@@ -24,7 +24,8 @@ class FrontendController extends Controller
         $banners = Banner::where('status', 1)
             ->orderBy('sort_order', 'asc')
             ->get();
-        return view('frontend.pages.home', compact('services', 'homeCategories', 'banners'));
+            $categories = Category::where('status', '1')->get();
+        return view('frontend.pages.home', compact('services', 'homeCategories', 'banners', 'categories'));
     }
     public function aboutUs()
     {

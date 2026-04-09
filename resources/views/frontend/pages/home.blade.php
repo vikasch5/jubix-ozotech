@@ -4,13 +4,13 @@
         @if($banners->count())
             <div class="intro-section">
                 <div class="swiper-container swiper-theme" data-swiper-options='{
-                                "slidesPerView": 1,
-                                "autoplay": {
-                                    "delay": 4000,
-                                    "disableOnInteraction": false
-                                },
-                                "loop": true
-                            }'>
+                                                "slidesPerView": 1,
+                                                "autoplay": {
+                                                    "delay": 4000,
+                                                    "disableOnInteraction": false
+                                                },
+                                                "loop": true
+                                            }'>
 
                     <div class="swiper-wrapper">
 
@@ -32,27 +32,67 @@
 
         <!-- End of .intro-section -->
 
+        <section class="category-section top-category bg-grey pt-10 pb-10 appear-animate">
+            <div class="container pb-2">
+                <h2 class="title justify-content-center pt-1 ls-normal mb-5">Categories</h2>
+                <div class="swiper">
+                    <div class="swiper-container swiper-theme pg-show" data-swiper-options="{
+                                    'spaceBetween': 20,
+                                    'slidesPerView': 2,
+                                    'autoplay': {
+                                        'delay': 2000,
+                                        'disableOnInteraction': false
+                                    },
+                                    'breakpoints': {
+                                        '576': {
+                                            'slidesPerView': 3
+                                        },
+                                        '768': {
+                                            'slidesPerView': 5
+                                        },
+                                        '992': {
+                                            'slidesPerView': 6
+                                        }
+                                    }
+                                }">
+                        <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-3 cols-2">
+                        @foreach ($categories as $category)
+                            <div class="swiper-slide text-center">
+                                <a href="{{ route('product.list', $category->slug) }}" class="d-block mb-2">
+                                    <img src="{{ asset('uploads/category/'.$category->image) }}" 
+                                        alt="{{ $category->category_name }}" 
+                                        width="130" height="130"
+                                        style="border-radius: 10px;">
+                                </a>
+                                <h5 class="mb-1">{{ $category->category_name }}</h5>
+                            </div>
+                        @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="container">
             {{-- <div class="swiper-container swiper-theme icon-box-wrapper appear-animate br-sm mt-6 mb-10"
                 data-swiper-options="{
-                                                                            'loop': true,
-                                                                            'slidesPerView': 1,
-                                                                            'autoplay': {
-                                                                                'delay': 4000,
-                                                                                'disableOnInteraction': false
-                                                                            },
-                                                                            'breakpoints': {
-                                                                                '576': {
-                                                                                    'slidesPerView': 2
-                                                                                },
-                                                                                '768': {
-                                                                                    'slidesPerView': 3
-                                                                                },
-                                                                                '1200': {
-                                                                                    'slidesPerView': 4
-                                                                                }
-                                                                            }
-                                                                        }">
+                                                                                    'loop': true,
+                                                                                    'slidesPerView': 1,
+                                                                                    'autoplay': {
+                                                                                        'delay': 4000,
+                                                                                        'disableOnInteraction': false
+                                                                                    },
+                                                                                    'breakpoints': {
+                                                                                        '576': {
+                                                                                            'slidesPerView': 2
+                                                                                        },
+                                                                                        '768': {
+                                                                                            'slidesPerView': 3
+                                                                                        },
+                                                                                        '1200': {
+                                                                                            'slidesPerView': 4
+                                                                                        }
+                                                                                    }
+                                                                                }">
                 <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
                     <div class="swiper-slide icon-box icon-box-side text-dark">
                         <span class="icon-box-icon icon-shipping">
@@ -99,26 +139,27 @@
                     {{-- <a href="{{ route('service.details') }}" class="font-weight-bold ls-25">More Services<i
                             class="w-icon-long-arrow-right"></i></a> --}}
                 </div>
-                <div class="swiper-container swiper-theme post-wrapper mb-10 mb-lg-5 appear-animate" data-swiper-options="{
+                <div class="swiper-container swiper-theme post-wrapper mb-10 mb-lg-5 appear-animate"
+                    data-swiper-options="{
 
-                                                                                                                            'spaceBetween': 20,
-                                                                                                                            'slidesPerView': 1,
-                                                                                                                            'autoplay': {
-                                                                                                                                'delay': 2000,
-                                                                                                                                'disableOnInteraction': false
-                                                                                                                            },
-                                                                                                                            'breakpoints': {
-                                                                                                                                '576': {
-                                                                                                                                    'slidesPerView': 2
-                                                                                                                                },
-                                                                                                                                '768': {
-                                                                                                                                    'slidesPerView': 3
-                                                                                                                                },
-                                                                                                                                '992': {
-                                                                                                                                    'slidesPerView': 4
-                                                                                                                                }
-                                                                                                                            }
-                                                                                                                        }">
+                                                                                                                                            'spaceBetween': 20,
+                                                                                                                                            'slidesPerView': 1,
+                                                                                                                                            'autoplay': {
+                                                                                                                                                'delay': 2000,
+                                                                                                                                                'disableOnInteraction': false
+                                                                                                                                            },
+                                                                                                                                            'breakpoints': {
+                                                                                                                                                '576': {
+                                                                                                                                                    'slidesPerView': 2
+                                                                                                                                                },
+                                                                                                                                                '768': {
+                                                                                                                                                    'slidesPerView': 3
+                                                                                                                                                },
+                                                                                                                                                '992': {
+                                                                                                                                                    'slidesPerView': 4
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }">
                     <div class="swiper-wrapper row cols-lg-4 cols-md-3 cols-sm-2 cols-1">
                         @foreach ($services as $service)
                             <div class="swiper-slide post">
@@ -155,24 +196,24 @@
                     <!-- End of .title-link-wrapper -->
                     <div class="swiper-container swiper-theme product-deals-wrapper appear-animate mb-7"
                         data-swiper-options="{
-                                                                                                                                        'spaceBetween': 20,
-                                                                                                                                        'slidesPerView': 2,
-                                                                                                                                        'autoplay': {
-                                                                                                                                            'delay': 2000,
-                                                                                                                                            'disableOnInteraction': false
-                                                                                                                                        },
-                                                                                                                                        'breakpoints': {
-                                                                                                                                            '576': {
-                                                                                                                                                'slidesPerView': 3
-                                                                                                                                            },
-                                                                                                                                            '768': {
-                                                                                                                                                'slidesPerView': 4
-                                                                                                                                            },
-                                                                                                                                            '992': {
-                                                                                                                                                'slidesPerView': 5
-                                                                                                                                            }
-                                                                                                                                        }
-                                                                                                                                    }">
+                                                                                                                                                                'spaceBetween': 20,
+                                                                                                                                                                'slidesPerView': 2,
+                                                                                                                                                                'autoplay': {
+                                                                                                                                                                    'delay': 2000,
+                                                                                                                                                                    'disableOnInteraction': false
+                                                                                                                                                                },
+                                                                                                                                                                'breakpoints': {
+                                                                                                                                                                    '576': {
+                                                                                                                                                                        'slidesPerView': 3
+                                                                                                                                                                    },
+                                                                                                                                                                    '768': {
+                                                                                                                                                                        'slidesPerView': 4
+                                                                                                                                                                    },
+                                                                                                                                                                    '992': {
+                                                                                                                                                                        'slidesPerView': 5
+                                                                                                                                                                    }
+                                                                                                                                                                }
+                                                                                                                                                            }">
                         <div class="swiper-wrapper row cols-lg-5 cols-md-4 cols-2">
                             @foreach ($homeCategory->products as $product)
                                 <div class="swiper-slide product-wrap">
@@ -239,28 +280,28 @@
 
             {{-- <h2 class="title text-left mb-5 appear-animate">Our Brands</h2>
             <div class="swiper-container swiper-theme brands-wrapper br-sm mb-10 appear-animate" data-swiper-options="{
-                                                                            'loop': true,
-                                                                            'spaceBetween': 20,
-                                                                            'slidesPerView': 2,
-                                                                            'autoplay': {
-                                                                                'delay': 4000,
-                                                                                'disableOnInteraction': false
-                                                                            },
-                                                                            'breakpoints': {
-                                                                                '576': {
-                                                                                    'slidesPerView': 3
-                                                                                },
-                                                                                '768': {
-                                                                                    'slidesPerView': 4
-                                                                                },
-                                                                                '992': {
-                                                                                    'slidesPerView': 6
-                                                                                },
-                                                                                '1200': {
-                                                                                    'slidesPerView': 8
-                                                                                }
-                                                                            }
-                                                                        }">
+                                                                                    'loop': true,
+                                                                                    'spaceBetween': 20,
+                                                                                    'slidesPerView': 2,
+                                                                                    'autoplay': {
+                                                                                        'delay': 4000,
+                                                                                        'disableOnInteraction': false
+                                                                                    },
+                                                                                    'breakpoints': {
+                                                                                        '576': {
+                                                                                            'slidesPerView': 3
+                                                                                        },
+                                                                                        '768': {
+                                                                                            'slidesPerView': 4
+                                                                                        },
+                                                                                        '992': {
+                                                                                            'slidesPerView': 6
+                                                                                        },
+                                                                                        '1200': {
+                                                                                            'slidesPerView': 8
+                                                                                        }
+                                                                                    }
+                                                                                }">
                 <div class="swiper-wrapper row cols-xl-8 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
                     <div class="swiper-slide">
                         <figure>
