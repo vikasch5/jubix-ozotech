@@ -2,6 +2,63 @@
 
 @section('content')
 
+    <style>
+        .spec-section {
+            margin-top: 30px;
+        }
+
+        /* TITLE */
+        .spec-title {
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 18px;
+        }
+
+        /* CONTAINER */
+        .spec-grid {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ROW */
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            transition: 0.25s;
+        }
+
+        /* ALT BACKGROUND */
+        .spec-row:nth-child(odd) {
+            background: #fafafa;
+        }
+
+        /* HOVER EFFECT */
+        .spec-row:hover {
+            background: #f1f5f9;
+        }
+
+        /* KEY */
+        .spec-key {
+            font-weight: 600;
+            color: #222;
+            font-size: 15px;
+        }
+
+        /* VALUE */
+        .spec-value {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* OPTIONAL: LIMIT WIDTH (VERY IMPORTANT FOR DESKTOP) */
+        .spec-section {
+            max-width: 700px;
+        }
+    </style>
     @php
         // Decode product images JSON
         $images = $product->images ? json_decode($product->images, true) : [];
@@ -48,11 +105,13 @@
 
                                 <button class="swiper-button-next"></button>
                                 <button class="swiper-button-prev"></button>
-                                <a href="#" class="product-gallery-btn product-image-full"><i class="w-icon-zoom"></i></a>
+                                <a href="#" class="product-gallery-btn product-image-full"><i
+                                        class="w-icon-zoom"></i></a>
                             </div>
 
                             <!-- Thumbnail Slider -->
-                            <div class="product-thumbs-wrap swiper-container" data-swiper-options="{
+                            <div class="product-thumbs-wrap swiper-container"
+                                data-swiper-options="{
                                             'navigation': { 'nextEl': '.swiper-button-next', 'prevEl': '.swiper-button-prev' },
                                             'breakpoints': {
                                                 '992': { 'direction': 'vertical', 'slidesPerView': 'auto' }
@@ -62,7 +121,8 @@
                                 <div class="product-thumbs swiper-wrapper row cols-lg-1 cols-4 gutter-sm">
                                     @foreach ($images as $img)
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ asset('storage/' . $img) }}" alt="Thumbnail" width="800" height="900">
+                                            <img src="{{ asset('storage/' . $img) }}" alt="Thumbnail" width="800"
+                                                height="900">
                                         </div>
                                     @endforeach
                                 </div>
@@ -89,7 +149,7 @@
                                         <a href="#">{{ $product->category->category_name ?? '' }}</a>
                                     </span>
                                 </div>
-                                @if($product->subCategory)
+                                @if ($product->subCategory)
                                     <div class="product-categories">
                                         Sub Category:
                                         <span class="product-category">
@@ -108,7 +168,7 @@
 
                             <!-- DESCRIPTION SHORT -->
                             <div class="product-short-desc lh-2 mt-3">
-                                {!! nl2br(e(Str::limit($product->description, 200))) !!}
+                                {!! Str::limit($product->description, 200) !!}
                             </div>
 
                             <hr class="product-divider">
@@ -130,7 +190,7 @@
 
                                     <!-- Enquiry Modal -->
                                     <a href="#" class="action-btn enquiry" data-bs-toggle="modal"
-                                        data-name="{{ $product->product_name }}" data-img="{{ $productImage  }}"
+                                        data-name="{{ $product->product_name }}" data-img="{{ $productImage }}"
                                         data-bs-target="#enquiryModal" data-product="{{ $product->product_name }}">
                                         <i class="fas fa-envelope fa-2x"></i>
                                     </a>
@@ -141,24 +201,50 @@
                             <hr class="product-divider">
 
                             <!-- FULL DESCRIPTION -->
-                            <h4 class="mt-4 mb-2">Description</h4>
-                            <div class="product-description">
-                                {!! nl2br(e($product->description)) !!}
-                            </div>
+
 
                         </div>
                     </div>
 
                 </div>
+                <h4 class="mt-4 mb-2">Description</h4>
+                <div class="product-description">
+                    {!! $product->description !!}
+                </div>
+                @if ($product->specifications && count(json_decode($product->specifications, true)) > 0)
+                    <hr class="product-divider">
+
+                    <div class="spec-section mt-4">
+
+                        <h4 class="spec-title">Product Specifications</h4>
+
+                        <div class="spec-grid">
+
+                            @foreach (json_decode($product->specifications, true) as $spec)
+                                <div class="spec-row">
+                                    <div class="spec-key">
+                                        {{ $spec['key'] }}
+                                    </div>
+                                    <div class="spec-value">
+                                        {{ $spec['value'] }}
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+
+                    </div>
+                @endif
 
                 <!-- RELATED PRODUCTS -->
-                @if($relatedProducts->count() > 0)
+                @if ($relatedProducts->count() > 0)
                     <section class="related-product-section mt-10">
                         <div class="title-link-wrapper mb-4">
                             <h4 class="title">Related Products</h4>
                         </div>
 
-                        <div class="swiper-container swiper-theme" data-swiper-options="{
+                        <div class="swiper-container swiper-theme"
+                            data-swiper-options="{
                                             'spaceBetween': 20,
                                             'slidesPerView': 2,
                                             'breakpoints': {
@@ -184,12 +270,12 @@
                                         </figure>
                                         <div class="product-details">
                                             <h4 class="product-name">
-                                                <a href="{{ route('product.detail', $item->slug) }}">{{ $item->product_name }}</a>
+                                                <a
+                                                    href="{{ route('product.detail', $item->slug) }}">{{ $item->product_name }}</a>
                                             </h4>
                                             <div class="product-price">₹{{ number_format($item->price, 2) }}</div>
                                         </div>
                                     </div>
-
                                 @endforeach
 
                             </div>

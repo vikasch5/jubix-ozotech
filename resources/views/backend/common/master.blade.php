@@ -15,7 +15,7 @@
     @yield('scripts')
     <script>$(document).ready(function () {
             $('#summernote').summernote({
-                height: 350,
+                height: 200,
 
                 toolbar: [
                     ['style', ['style']],
