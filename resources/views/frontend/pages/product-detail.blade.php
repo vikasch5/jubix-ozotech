@@ -58,6 +58,38 @@
         .spec-section {
             max-width: 700px;
         }
+
+        .product-price {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Sale Price (highlight) */
+        .new-price {
+            color: #e63946;
+            /* modern red */
+            font-weight: 700;
+        }
+
+        /* Old Price */
+        .old-price {
+            color: #9ca3af;
+            /* soft gray */
+            font-size: 16px;
+            text-decoration: line-through;
+        }
+
+        /* Discount badge */
+        .discount-badge {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
     </style>
     @php
         // Decode product images JSON
@@ -105,24 +137,21 @@
 
                                 <button class="swiper-button-next"></button>
                                 <button class="swiper-button-prev"></button>
-                                <a href="#" class="product-gallery-btn product-image-full"><i
-                                        class="w-icon-zoom"></i></a>
+                                <a href="#" class="product-gallery-btn product-image-full"><i class="w-icon-zoom"></i></a>
                             </div>
 
                             <!-- Thumbnail Slider -->
-                            <div class="product-thumbs-wrap swiper-container"
-                                data-swiper-options="{
-                                            'navigation': { 'nextEl': '.swiper-button-next', 'prevEl': '.swiper-button-prev' },
-                                            'breakpoints': {
-                                                '992': { 'direction': 'vertical', 'slidesPerView': 'auto' }
-                                            }
-                                         }">
+                            <div class="product-thumbs-wrap swiper-container" data-swiper-options="{
+                                                    'navigation': { 'nextEl': '.swiper-button-next', 'prevEl': '.swiper-button-prev' },
+                                                    'breakpoints': {
+                                                        '992': { 'direction': 'vertical', 'slidesPerView': 'auto' }
+                                                    }
+                                                 }">
 
                                 <div class="product-thumbs swiper-wrapper row cols-lg-1 cols-4 gutter-sm">
                                     @foreach ($images as $img)
                                         <div class="product-thumb swiper-slide">
-                                            <img src="{{ asset('storage/' . $img) }}" alt="Thumbnail" width="800"
-                                                height="900">
+                                            <img src="{{ asset('storage/' . $img) }}" alt="Thumbnail" width="800" height="900">
                                         </div>
                                     @endforeach
                                 </div>
@@ -163,7 +192,33 @@
 
                             <!-- PRICE -->
                             <div class="product-price">
-                                <ins class="new-price">₹{{ number_format($product->price, 2) }}</ins>
+
+                                @if($product->sale_price && $product->sale_price < $product->price)
+
+                                    <ins class="new-price">
+                                        ₹{{ number_format($product->sale_price, 2) }}
+                                    </ins>
+
+                                    <del class="old-price">
+                                        ₹{{ number_format($product->price, 2) }}
+                                    </del>
+
+                                    @php
+                                        $discount = round((($product->price - $product->sale_price) / $product->price) * 100);
+                                    @endphp
+
+                                    <span class="discount-badge">
+                                        {{ $discount }}% OFF
+                                    </span>
+
+                                @else
+
+                                    <ins class="new-price">
+                                        ₹{{ number_format($product->price, 2) }}
+                                    </ins>
+
+                                @endif
+
                             </div>
 
                             <!-- DESCRIPTION SHORT -->
@@ -243,16 +298,15 @@
                             <h4 class="title">Related Products</h4>
                         </div>
 
-                        <div class="swiper-container swiper-theme"
-                            data-swiper-options="{
-                                            'spaceBetween': 20,
-                                            'slidesPerView': 2,
-                                            'breakpoints': {
-                                                '576': { 'slidesPerView': 3 },
-                                                '768': { 'slidesPerView': 4 },
-                                                '992': { 'slidesPerView': 4 }
-                                            }
-                                        }">
+                        <div class="swiper-container swiper-theme" data-swiper-options="{
+                                                            'spaceBetween': 20,
+                                                            'slidesPerView': 2,
+                                                            'breakpoints': {
+                                                                '576': { 'slidesPerView': 3 },
+                                                                '768': { 'slidesPerView': 4 },
+                                                                '992': { 'slidesPerView': 4 }
+                                                            }
+                                                        }">
 
                             <div class="swiper-wrapper row cols-lg-3 cols-md-4 cols-sm-3 cols-2">
 
@@ -270,8 +324,7 @@
                                         </figure>
                                         <div class="product-details">
                                             <h4 class="product-name">
-                                                <a
-                                                    href="{{ route('product.detail', $item->slug) }}">{{ $item->product_name }}</a>
+                                                <a href="{{ route('product.detail', $item->slug) }}">{{ $item->product_name }}</a>
                                             </h4>
                                             <div class="product-price">₹{{ number_format($item->price, 2) }}</div>
                                         </div>

@@ -95,9 +95,14 @@
 
                                     <!-- Price -->
                                     <div class="col-md-4 mb-3">
-                                        <label class="form-label">Price</label>
+                                        <label class="form-label">MRP Price</label>
                                         <input type="number" name="price" class="form-control"
-                                            value="{{ $product->price ?? '' }}" placeholder="Enter price">
+                                            value="{{ $product->price ?? '' }}" placeholder="Enter MRP price">
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Sale Price</label>
+                                        <input type="number" name="sale_price" class="form-control"
+                                            value="{{ $product->sale_price ?? '' }}" placeholder="Enter sale price">
                                     </div>
 
                                     <!-- Product Images Upload -->

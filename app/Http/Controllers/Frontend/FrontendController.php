@@ -24,7 +24,7 @@ class FrontendController extends Controller
         $banners = Banner::where('status', 1)
             ->orderBy('sort_order', 'asc')
             ->get();
-            $categories = Category::where('status', '1')->get();
+        $categories = Category::where('status', '1')->get();
         return view('frontend.pages.home', compact('services', 'homeCategories', 'banners', 'categories'));
     }
     public function aboutUs()
@@ -162,9 +162,9 @@ class FrontendController extends Controller
     public function contactUsSave(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'    => 'required|string|max:100',
-            'email'   => 'required|email|max:150',
-            'phone'   => 'nullable|string|max:20',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|max:150',
+            'phone' => 'nullable|string|max:20',
             'subject' => 'nullable|string|max:150',
             'message' => 'required|string|min:10',
         ]);
@@ -176,16 +176,16 @@ class FrontendController extends Controller
         }
 
         Contact::create([
-            'name'       => $request->name,
-            'email'      => $request->email,
-            'phone'      => $request->phone,
-            'subject'    => $request->subject,
-            'message'    => $request->message,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
             'ip_address' => $request->ip(),
         ]);
 
         return response()->json([
-            'status'  => true,
+            'status' => true,
             'message' => 'Thank you! Your message has been sent successfully.'
         ]);
     }

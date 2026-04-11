@@ -41,6 +41,7 @@ class ProductController extends Controller
             'category_id' => 'required|integer',
             'sub_category_id' => 'nullable|integer',
             'price' => 'required|numeric',
+            'sale_price' => 'required|numeric',
             'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status' => 'required|in:0,1',
             'description' => 'nullable|string',
@@ -77,6 +78,7 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->price = $request->price;
+        $product->sale_price = $request->sale_price;
         $product->status = $request->status;
         $product->description = $request->description;
         $product->slug = $slug;
