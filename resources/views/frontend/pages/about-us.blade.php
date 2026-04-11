@@ -109,7 +109,7 @@
 
                     <!-- LEFT CONTENT -->
                     <div class="col-lg-6 mb-5">
-                        {!! optional($page)->content !!}
+                        {!! optional($page)->content !!}ff
                     </div>
 
                     <div class="col-lg-6 mb-5">

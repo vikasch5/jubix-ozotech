@@ -32,6 +32,13 @@
                     </a>
                 </li>
                 <li class="slide">
+                    <a href="{{ route('admin.banner.list') }}"
+                        class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.banner.list', 'admin.banner.add']) ? 'active' : '' }}">
+                        <i class="side-menu__icon ri-image-line"></i>
+                        <span class="side-menu__label">Banners</span>
+                    </a>
+                </li>
+                <li class="slide">
                     <a href="{{ route('admin.service.list') }}"
                         class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.service.list', 'admin.service.add']) ? 'active' : '' }}">
                         <i class="side-menu__icon ri-service-line"></i>
@@ -84,7 +91,7 @@
                 <li class="slide">
                     <a href="{{ route('admin.pages.list') }}"
                         class="side-menu__item {{ in_array(Route::currentRouteName(), ['admin.pages.list', 'admin.pages.add']) ? 'active' : '' }}">
-                        <i class="side-menu__icon ri-contacts-line"></i>
+                        <i class="side-menu__icon ri-file-text-line"></i>
                         <span class="side-menu__label">Pages</span>
                     </a>
                 </li>

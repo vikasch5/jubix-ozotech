@@ -148,7 +148,7 @@
                                             placeholder="YouTube Channel URL" value="{{ $setting->youtube ?? '' }}">
                                     </div>
 
-                                      <div class="col-md-12">
+                                      {{-- <div class="col-md-12">
                                         <h5 class="fw-bold">Product Settings</h5>
                                         <hr>
                                     </div>
@@ -157,7 +157,7 @@
                                         <label class="form-label">Available Pincodes</label>
                                         <input type="text" name="pincodes" class="form-control" placeholder="Available Pincodes"
                                             value="{{ $setting->pincodes ?? '' }}">
-                                    </div>
+                                    </div> --}}
 
                                     <!-- Save -->
                                     <div class="col-md-12 mt-3">
