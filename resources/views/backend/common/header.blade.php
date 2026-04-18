@@ -9,11 +9,11 @@
             <div class="header-element">
                 <div class="horizontal-logo">
                     <a href="index.html" class="header-logo">
-                        <img src="{{ asset('frontend/assets/images/logo/logo.png')}}" alt="logo" class="    ">
-                        <img src="{{ asset('frontend/assets/images/logo/logo.png')}}" alt="logo" class="toggle-logo">
-                        <img src="{{ asset('backend/assets/images/brand-logos/desktop-dark.png')}}" alt="logo"
+                        <img src="{{ asset(optional($settings)->logo)}}" alt="logo" class="    ">
+                        <img src="{{ asset(optional($settings)->logo)}}" alt="logo" class="toggle-logo">
+                        <img src="{{ asset(optional($settings)->logo)}}" alt="logo"
                             class="desktop-dark">
-                        <img src="{{ asset('backend/assets/images/brand-logos/toggle-dark.png')}}" alt="logo"
+                        <img src="{{ asset(optional($settings)->logo)}}" alt="logo"
                             class="toggle-dark">
                     </a>
                 </div>

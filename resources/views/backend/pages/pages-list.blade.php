@@ -10,8 +10,8 @@
                             <div class="card-title"> Pages List
                             </div>
                             <div class="right-btn">
-                                <a href="{{ route('admin.category.add') }}"
-                                    class="btn btn-primary-light btn-wave me-2 waves-effect waves-light">Add Category</a>
+                                <a href="{{ route('admin.pages.add') }}"
+                                    class="btn btn-primary-light btn-wave me-2 waves-effect waves-light">Add Page</a>
                             </div>
                         </div>
                         <div class="card-body p-0">
